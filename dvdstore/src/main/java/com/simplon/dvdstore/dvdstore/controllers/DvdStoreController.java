@@ -37,10 +37,11 @@ public class DvdStoreController {
         dvdStoreService.delete(id);
     }
 
+
     //Get by id
+    //http://localhost:8080/dvds/dvd/3
     @GetMapping("/dvd/{id}")
     public DvdStoreRepositoryModel findById(Long id){
         return dvdStoreService.finById(id);
     }
-
 }
