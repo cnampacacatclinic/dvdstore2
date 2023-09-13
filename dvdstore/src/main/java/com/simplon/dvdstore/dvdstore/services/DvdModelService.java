@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DvdModel {
+public class DvdModelService {
     int id;
     String genre;
     String name;

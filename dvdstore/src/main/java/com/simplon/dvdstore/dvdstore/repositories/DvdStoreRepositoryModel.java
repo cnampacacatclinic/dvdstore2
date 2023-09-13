@@ -15,6 +15,8 @@ public class DvdStoreRepositoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    @Column(name="genre")
     private String genre;
+    @Column(name="name")
     private String name;
 }

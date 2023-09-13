@@ -8,11 +8,11 @@ import java.util.List;
 
 @Data
 public class DvdStoreModel {
-    List<DvdModel> dvds = new ArrayList<>();
+    List<DvdModelService> dvds = new ArrayList<>();
 
     public DvdStoreModel() {
     }
-    public DvdStoreModel(List<DvdModel> dvds) {
+    public DvdStoreModel(List<DvdModelService> dvds) {
         this.dvds = dvds;
     }
 
