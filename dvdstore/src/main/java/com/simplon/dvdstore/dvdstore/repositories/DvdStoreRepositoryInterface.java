@@ -2,6 +2,7 @@ package com.simplon.dvdstore.dvdstore.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public interface DvdStoreRepositoryInterface extends CrudRepository<DvdStoreRepositoryModel,Long> {
@@ -10,5 +11,5 @@ public interface DvdStoreRepositoryInterface extends CrudRepository<DvdStoreRepo
 
     List<DvdStoreRepositoryModel> findById(int id);
 
-    List<DvdStoreRepositoryModel> findAll();
+    ArrayList<DvdStoreRepositoryModel> findAll();
 }
