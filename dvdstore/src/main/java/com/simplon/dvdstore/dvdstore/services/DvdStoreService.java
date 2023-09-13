@@ -5,9 +5,9 @@ import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterface;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModel;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class DvdStoreService {
@@ -33,4 +33,10 @@ public class DvdStoreService {
     public DvdStoreRepositoryModel save(DvdStoreRepositoryModel dvd) {
         return dvdStoreRepository.save(dvd);
     }
+
+    // Supprimer un DVD par son ID
+    public void delete(long id){
+        dvdStoreRepository.deleteById(id);
+    }
+
 }

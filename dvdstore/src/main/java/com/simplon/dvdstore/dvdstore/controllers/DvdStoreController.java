@@ -19,12 +19,7 @@ public class DvdStoreController {
     @Autowired
     private DvdStoreService dvdStoreService;
 
-    //Dans le navigateur http://localhost:8080/dvds/home
-    /*@GetMapping("/home")
-    public ArrayList<DvdModelService> getAllDvds() {
-        return dvdStoreService.findAll();
-    }/**/
-
+    //chemin http://localhost:8080/dvds/home
     @GetMapping("/home")
     public ArrayList<DvdStoreDto> getAllDvds() {
         return dvdStoreService.findAll();
@@ -36,7 +31,10 @@ public class DvdStoreController {
         return dvdStoreService.save(dvd);
     }
     /////////////////*crud*////////////
-    //@DeleteMapping
-
+    //Supprimer
+    @DeleteMapping("/supp/{id}")
+    public void deleteDvd(@PathVariable Long id){
+        dvdStoreService.delete(id);
+    }
 
 }
