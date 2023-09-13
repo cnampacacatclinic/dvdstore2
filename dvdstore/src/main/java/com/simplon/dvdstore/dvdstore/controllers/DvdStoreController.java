@@ -37,4 +37,10 @@ public class DvdStoreController {
         dvdStoreService.delete(id);
     }
 
+    //Get by id
+    @GetMapping("/dvd/{id}")
+    public DvdStoreRepositoryModel findById(Long id){
+        return dvdStoreService.finById(id);
+    }
+
 }
