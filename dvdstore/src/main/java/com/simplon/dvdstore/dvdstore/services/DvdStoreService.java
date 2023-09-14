@@ -38,9 +38,19 @@ public class DvdStoreService {
         dvdStoreRepository.deleteById(id);
     }
 
-    public DvdStoreRepositoryModel finById(Long id) {
-        DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel();
-        dvdStoreRepositoryModel.getId();
-        return dvdStoreRepositoryModel;
+    public DvdStoreDto updateById(Long id,DvdStoreRepositoryModel dvd) {
+        if (id != null) {
+            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(),dvd.getGenre());
+            return dvdDto;
+        }else {
+        return null;
+        }
     }
+
+    // Obtenir un DVD par son ID
+    public DvdStoreRepositoryModel findById(Long id) {
+        //le orElse c'est parce que l'identifiant n'existe peut-être pas
+        return dvdStoreRepository.findById(id).orElse(null);
+    }
+
 }

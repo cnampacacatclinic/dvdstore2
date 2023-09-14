@@ -30,7 +30,7 @@ public class DvdStoreController {
     public DvdStoreRepositoryModel addDvd(@RequestBody DvdStoreRepositoryModel dvd) {
         return dvdStoreService.save(dvd);
     }
-    /////////////////*crud*////////////
+
     //Supprimer
     @DeleteMapping("/supp/{id}")
     public void deleteDvd(@PathVariable Long id){
@@ -41,7 +41,15 @@ public class DvdStoreController {
     //Get by id
     //http://localhost:8080/dvds/dvd/3
     @GetMapping("/dvd/{id}")
-    public DvdStoreRepositoryModel findById(Long id){
-        return dvdStoreService.finById(id);
+    public DvdStoreRepositoryModel getDvdById(@PathVariable Long id){
+        return dvdStoreService.findById(id);
     }
+
+    //Update
+    @PutMapping("/{id}")
+    public DvdStoreDto updateDvd(@PathVariable Long id, @RequestBody DvdStoreRepositoryModel dvd){
+        return dvdStoreService.updateById(id,dvd);
+    }
+
+
 }

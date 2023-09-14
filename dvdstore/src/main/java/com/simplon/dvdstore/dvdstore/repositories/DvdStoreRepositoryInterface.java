@@ -12,4 +12,7 @@ public interface DvdStoreRepositoryInterface extends CrudRepository<DvdStoreRepo
     List<DvdStoreRepositoryModel> findById(int id);
 
     ArrayList<DvdStoreRepositoryModel> findAll();
+
+
+
 }
