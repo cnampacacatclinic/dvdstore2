@@ -13,6 +13,8 @@ public class DvdStoreService {
     @Autowired
     private DvdStoreRepositoryInterface dvdStoreRepository;
 
+    DvdStoreDto Dto;
+
     //je ne peux pas utiliser List donc j'ai mis Iterable car dans
     //l'interface j'utilise CrudRepository<DvdStoreRepositoryModel,Long>
     public ArrayList<DvdStoreDto> findAll() {
@@ -38,12 +40,16 @@ public class DvdStoreService {
         dvdStoreRepository.deleteById(id);
     }
 
-    public DvdStoreDto updateById(Long id,DvdStoreRepositoryModel dvd) {
+    public DvdStoreRepositoryModel updateById(Long id, DvdStoreRepositoryModel dvd) {
         if (id != null) {
-            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(),dvd.getGenre());
-            return dvdDto;
+            DvdStoreRepositoryModel dvd2 = dvdStoreRepository.findById(id).orElse(null);
+            //DvdStoreDto dvdDto = new DvdStoreDto(dvd2.getName(),dvd2.getGenre());
+            //return dvdDto;
+            dvd.setName(dvd2.getName());
+            dvd.setGenre(dvd2.getGenre());
+            return dvdStoreRepository.save(dvd);
         }else {
-        return null;
+            return null;
         }
     }
 

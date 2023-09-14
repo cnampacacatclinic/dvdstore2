@@ -47,7 +47,7 @@ public class DvdStoreController {
 
     //Update
     @PutMapping("/{id}")
-    public DvdStoreDto updateDvd(@PathVariable Long id, @RequestBody DvdStoreRepositoryModel dvd){
+    public DvdStoreRepositoryModel updateDvd(@PathVariable Long id, @RequestBody DvdStoreRepositoryModel dvd){
         return dvdStoreService.updateById(id,dvd);
     }
 
