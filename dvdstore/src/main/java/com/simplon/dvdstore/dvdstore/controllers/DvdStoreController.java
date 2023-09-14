@@ -34,8 +34,8 @@ public class DvdStoreController {
 
     //Supprimer
     @DeleteMapping("/supp/{id}")
-    public void deleteDvd(@PathVariable Long id){
-        dvdStoreService.delete(id);
+    public boolean deleteDvd(@PathVariable Long id){
+        return dvdStoreService.delete(id);
     }
 
 

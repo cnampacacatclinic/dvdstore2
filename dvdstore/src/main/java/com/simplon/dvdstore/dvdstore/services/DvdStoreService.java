@@ -36,11 +36,14 @@ public class DvdStoreService {
     }
 
     // Supprimer un DVD par son ID
-    public void delete(long id){
+    public boolean delete(long id){
         dvdStoreRepository.deleteById(id);
+        return true;
     }
 
     public boolean updateById(Long id, DvdModelService dvd) {
+        //Service a reçu un DTO de la part du controller
+        //Le rpository permet d'obtenir les models getters  setters etc..
         if (id != null) {
             DvdStoreRepositoryModel dvd2 = dvdStoreRepository.findById(id).orElse(null);
             if(dvd2!=null)
