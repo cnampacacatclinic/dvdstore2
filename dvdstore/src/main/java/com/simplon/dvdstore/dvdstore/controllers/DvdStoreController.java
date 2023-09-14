@@ -49,7 +49,7 @@ public class DvdStoreController {
     //Update
     @PutMapping("/{id}")
     public boolean updateDvd(@PathVariable Long id, @RequestBody DvdStoreDto dvd){
-        DvdModelService dvdModelService = new DvdModelService(dvd.genre(),dvd.name());
+        DvdModelService dvdModelService = new DvdModelService(dvd.genre(),dvd.name(),dvd.quantity());
         return dvdStoreService.updateById(id,dvdModelService);
     }
 }

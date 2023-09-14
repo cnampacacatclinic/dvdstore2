@@ -13,16 +13,12 @@ public class DvdStoreService {
     @Autowired
     private DvdStoreRepositoryInterface dvdStoreRepository;
 
-    DvdStoreDto Dto;
-
-    //je ne peux pas utiliser List donc j'ai mis Iterable car dans
-    //l'interface j'utilise CrudRepository<DvdStoreRepositoryModel,Long>
     public ArrayList<DvdStoreDto> findAll() {
         ArrayList<DvdStoreRepositoryModel> dvdList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDto> dvdDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModel dvd : dvdList){
-            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre());
+            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre(), dvd.getQuantity());
             dvdDtoList.add(dvdDto);
         }
 
@@ -38,17 +34,19 @@ public class DvdStoreService {
     // Supprimer un DVD par son ID
     public boolean delete(long id){
         dvdStoreRepository.deleteById(id);
+        //pour renvoyer true dans la console
         return true;
     }
 
     public boolean updateById(Long id, DvdModelService dvd) {
         //Service a reçu un DTO de la part du controller
-        //Le rpository permet d'obtenir les models getters  setters etc..
+        //Le repository permet d'obtenir les models getters  setters etc..
         if (id != null) {
             DvdStoreRepositoryModel dvd2 = dvdStoreRepository.findById(id).orElse(null);
             if(dvd2!=null)
             {
-                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName());
+                //les parametres entre les parentheses du new DvdStoreRepositoryModel, ceux sont les mutatteurs du model de service
+                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity());
                 var x = dvdStoreRepository.save(dvdStoreRepositoryModel);
                 if(x!=null) {
                     return true;

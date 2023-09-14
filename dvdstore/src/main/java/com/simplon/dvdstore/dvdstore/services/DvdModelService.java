@@ -12,4 +12,5 @@ public class DvdModelService {
     //int id;
     String genre;
     String name;
+    int quantity;
 }

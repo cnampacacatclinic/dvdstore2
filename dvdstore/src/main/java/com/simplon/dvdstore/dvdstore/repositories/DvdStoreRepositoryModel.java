@@ -20,4 +20,6 @@ public class DvdStoreRepositoryModel {
     private String genre;
     @Column(name="name")
     private String name;
+    @Column(name="quantity")
+    private int quantity;
 }
