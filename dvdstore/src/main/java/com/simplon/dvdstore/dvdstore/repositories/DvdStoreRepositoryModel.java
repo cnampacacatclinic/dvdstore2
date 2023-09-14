@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.util.Optional;
 
 @Entity
 @Table(name = "movies")
@@ -16,7 +15,7 @@ import java.util.Optional;
 public class DvdStoreRepositoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(name="genre")
     private String genre;
     @Column(name="name")

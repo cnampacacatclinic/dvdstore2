@@ -40,17 +40,26 @@ public class DvdStoreService {
         dvdStoreRepository.deleteById(id);
     }
 
-    public DvdStoreRepositoryModel updateById(Long id, DvdStoreRepositoryModel dvd) {
+    public boolean updateById(Long id, DvdModelService dvd) {
         if (id != null) {
             DvdStoreRepositoryModel dvd2 = dvdStoreRepository.findById(id).orElse(null);
-            //DvdStoreDto dvdDto = new DvdStoreDto(dvd2.getName(),dvd2.getGenre());
-            //return dvdDto;
-            dvd.setName(dvd2.getName());
+            if(dvd2!=null)
+            {
+                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName());
+                var x = dvdStoreRepository.save(dvdStoreRepositoryModel);
+                if(x!=null) {
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+            /*dvd.setName(dvd2.getName());
             dvd.setGenre(dvd2.getGenre());
-            return dvdStoreRepository.save(dvd);
+            return dvdStoreRepository.save(dvd);*/
         }else {
-            return null;
+            return false;
         }
+        return false;
     }
 
     // Obtenir un DVD par son ID
