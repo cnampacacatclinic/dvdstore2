@@ -8,7 +8,4 @@ public interface DvdStoreRepositoryInterface extends CrudRepository<DvdStoreRepo
 
     //d'abbord créer une methode dans le repostitory avant de l'utiliser dans le service et le crontoller
     ArrayList<DvdStoreRepositoryModelMovies> findAll();
-
-
-
 }
