@@ -18,7 +18,7 @@ public class DvdStoreService {
         ArrayList<DvdStoreDto> dvdDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModel dvd : dvdList){
-            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre(), dvd.getQuantity());
+            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice());
             dvdDtoList.add(dvdDto);
         }
 
@@ -38,7 +38,7 @@ public class DvdStoreService {
         return true;
     }
 
-    public boolean updateById(Long id, DvdModelService dvd) {
+    public boolean updateById(Long id, DvdModelServiceMovies dvd) {
         //Service a reçu un DTO de la part du controller
         //Le repository permet d'obtenir les models getters  setters etc..
         if (id != null) {
@@ -46,7 +46,7 @@ public class DvdStoreService {
             if(dvd2!=null)
             {
                 //les parametres entre les parentheses du new DvdStoreRepositoryModel, ceux sont les mutatteurs du model de service
-                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity());
+                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity(),dvd.getPrice());
                 var x = dvdStoreRepository.save(dvdStoreRepositoryModel);
                 if(x!=null) {
                     return true;
