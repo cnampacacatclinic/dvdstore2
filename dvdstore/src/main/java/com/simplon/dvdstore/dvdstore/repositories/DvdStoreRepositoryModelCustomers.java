@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class DvdStoreRepositoryModelCustomer {
+public class DvdStoreRepositoryModelCustomers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

@@ -1,7 +1,7 @@
 package com.simplon.dvdstore.dvdstore.services;
 
-import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDto;
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterface;
+import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoMovies;
+import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterfaceMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,14 +11,14 @@ import java.util.ArrayList;
 @Service
 public class DvdStoreService {
     @Autowired
-    private DvdStoreRepositoryInterface dvdStoreRepository;
+    private DvdStoreRepositoryInterfaceMovies dvdStoreRepository;
 
-    public ArrayList<DvdStoreDto> findAll() {
+    public ArrayList<DvdStoreDtoMovies> findAll() {
         ArrayList<DvdStoreRepositoryModelMovies> dvdList = dvdStoreRepository.findAll();
-        ArrayList<DvdStoreDto> dvdDtoList = new ArrayList<>();
+        ArrayList<DvdStoreDtoMovies> dvdDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelMovies dvd : dvdList){
-            DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice());
+            DvdStoreDtoMovies dvdDto = new DvdStoreDtoMovies(dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice());
             dvdDtoList.add(dvdDto);
         }
 

@@ -22,7 +22,7 @@ public class DvdStoreControllerMovies {
 
     //chemin http://localhost:8080/dvds/home
     @GetMapping("/home")
-    public ArrayList<DvdStoreDto> getAllDvds() {
+    public ArrayList<DvdStoreDtoMovies> getAllDvds() {
         return dvdStoreService.findAll();
     }
 
@@ -48,7 +48,7 @@ public class DvdStoreControllerMovies {
 
     //Update
     @PutMapping("/{id}")
-    public boolean updateDvd(@PathVariable Long id, @RequestBody DvdStoreDto dvd){
+    public boolean updateDvd(@PathVariable Long id, @RequestBody DvdStoreDtoMovies dvd){
         DvdModelServiceMovies dvdModelService = new DvdModelServiceMovies(dvd.genre(),dvd.name(),dvd.quantity(),dvd.price());
         return dvdStoreService.updateById(id,dvdModelService);
     }
