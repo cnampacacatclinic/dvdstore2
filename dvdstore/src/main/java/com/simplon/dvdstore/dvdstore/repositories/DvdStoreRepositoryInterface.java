@@ -7,10 +7,7 @@ import java.util.List;
 
 public interface DvdStoreRepositoryInterface extends CrudRepository<DvdStoreRepositoryModel,Long> {
 
-    //List<DvdStoreRepositoryModel> findById(Long id);
-
-    List<DvdStoreRepositoryModel> findById(int id);
-
+//d'abord créer un 
     ArrayList<DvdStoreRepositoryModel> findAll();
 
 
