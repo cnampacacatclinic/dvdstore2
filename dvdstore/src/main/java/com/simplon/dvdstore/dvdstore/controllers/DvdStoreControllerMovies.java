@@ -3,7 +3,7 @@ package com.simplon.dvdstore.dvdstore.controllers;
 import com.simplon.dvdstore.dvdstore.services.DvdModelServiceMovies;
 import org.springframework.web.bind.annotation.*;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
-import com.simplon.dvdstore.dvdstore.services.DvdStoreService;
+import com.simplon.dvdstore.dvdstore.services.DvdStoreServiceMovies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.ArrayList;
 @RequestMapping("dvds")
 public class DvdStoreControllerMovies {
     @Autowired
-    private DvdStoreService dvdStoreService;
+    private DvdStoreServiceMovies dvdStoreService;
 
     //chemin http://localhost:8080/dvds/home
     @GetMapping("/home")
@@ -33,7 +33,7 @@ public class DvdStoreControllerMovies {
     }
 
     //Supprimer
-    @DeleteMapping("/supp/{id}")
+    @DeleteMapping("/{id}")
     public boolean deleteDvd(@PathVariable Long id){
         return dvdStoreService.delete(id);
     }
@@ -41,7 +41,7 @@ public class DvdStoreControllerMovies {
 
     //Get by id
     //http://localhost:8080/dvds/dvd/3
-    @GetMapping("/dvd/{id}")
+    @GetMapping("/{id}")
     public DvdStoreRepositoryModelMovies getDvdById(@PathVariable Long id){
         return dvdStoreService.findById(id);
     }

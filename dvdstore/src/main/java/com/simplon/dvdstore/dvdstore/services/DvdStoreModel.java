@@ -8,12 +8,12 @@ import java.util.List;
 
 @Data
 public class DvdStoreModel {
-    List<DvdModelServiceMovies> dvds = new ArrayList<>();
+    /*List<DvdModelServiceMovies> dvds = new ArrayList<>();
 
     public DvdStoreModel() {
     }
     public DvdStoreModel(List<DvdModelServiceMovies> dvds) {
         this.dvds = dvds;
-    }
+    }*/
 
 }

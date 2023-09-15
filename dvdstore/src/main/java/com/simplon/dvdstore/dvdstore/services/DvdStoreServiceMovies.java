@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 
 @Service
-public class DvdStoreService {
+public class DvdStoreServiceMovies {
     @Autowired
     private DvdStoreRepositoryInterfaceMovies dvdStoreRepository;
 
