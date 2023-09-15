@@ -2,7 +2,7 @@ package com.simplon.dvdstore.dvdstore.services;
 
 import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDto;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterface;
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModel;
+import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,10 +14,10 @@ public class DvdStoreService {
     private DvdStoreRepositoryInterface dvdStoreRepository;
 
     public ArrayList<DvdStoreDto> findAll() {
-        ArrayList<DvdStoreRepositoryModel> dvdList = dvdStoreRepository.findAll();
+        ArrayList<DvdStoreRepositoryModelMovies> dvdList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDto> dvdDtoList = new ArrayList<>();
 
-        for(DvdStoreRepositoryModel dvd : dvdList){
+        for(DvdStoreRepositoryModelMovies dvd : dvdList){
             DvdStoreDto dvdDto = new DvdStoreDto(dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice());
             dvdDtoList.add(dvdDto);
         }
@@ -27,7 +27,7 @@ public class DvdStoreService {
 
 
     //pout inserer en table
-    public DvdStoreRepositoryModel save(DvdStoreRepositoryModel dvd) {
+    public DvdStoreRepositoryModelMovies save(DvdStoreRepositoryModelMovies dvd) {
         return dvdStoreRepository.save(dvd);
     }
 
@@ -42,11 +42,11 @@ public class DvdStoreService {
         //Service a reçu un DTO de la part du controller
         //Le repository permet d'obtenir les models getters  setters etc..
         if (id != null) {
-            DvdStoreRepositoryModel dvd2 = dvdStoreRepository.findById(id).orElse(null);
+            DvdStoreRepositoryModelMovies dvd2 = dvdStoreRepository.findById(id).orElse(null);
             if(dvd2!=null)
             {
                 //les parametres entre les parentheses du new DvdStoreRepositoryModel, ceux sont les mutatteurs du model de service
-                DvdStoreRepositoryModel dvdStoreRepositoryModel = new DvdStoreRepositoryModel(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity(),dvd.getPrice());
+                DvdStoreRepositoryModelMovies dvdStoreRepositoryModel = new DvdStoreRepositoryModelMovies(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity(),dvd.getPrice());
                 var x = dvdStoreRepository.save(dvdStoreRepositoryModel);
                 if(x!=null) {
                     return true;
@@ -64,7 +64,7 @@ public class DvdStoreService {
     }
 
     // Obtenir un DVD par son ID
-    public DvdStoreRepositoryModel findById(Long id) {
+    public DvdStoreRepositoryModelMovies findById(Long id) {
         //le orElse c'est parce que l'identifiant n'existe peut-être pas
         return dvdStoreRepository.findById(id).orElse(null);
     }

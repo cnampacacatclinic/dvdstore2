@@ -2,7 +2,7 @@ package com.simplon.dvdstore.dvdstore.controllers;
 
 import com.simplon.dvdstore.dvdstore.services.DvdModelServiceMovies;
 import org.springframework.web.bind.annotation.*;
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModel;
+import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import com.simplon.dvdstore.dvdstore.services.DvdStoreService;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,7 +28,7 @@ public class DvdStoreControllerMovies {
 
     // Ajouter un nouveau DVD grace  la methode save dans DvdStoreService
     @PostMapping("/add")
-    public DvdStoreRepositoryModel addDvd(@RequestBody DvdStoreRepositoryModel dvd) {
+    public DvdStoreRepositoryModelMovies addDvd(@RequestBody DvdStoreRepositoryModelMovies dvd) {
         return dvdStoreService.save(dvd);
     }
 
@@ -42,7 +42,7 @@ public class DvdStoreControllerMovies {
     //Get by id
     //http://localhost:8080/dvds/dvd/3
     @GetMapping("/dvd/{id}")
-    public DvdStoreRepositoryModel getDvdById(@PathVariable Long id){
+    public DvdStoreRepositoryModelMovies getDvdById(@PathVariable Long id){
         return dvdStoreService.findById(id);
     }
 
