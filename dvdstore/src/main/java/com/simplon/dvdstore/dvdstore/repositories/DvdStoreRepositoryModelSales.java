@@ -19,5 +19,5 @@ public class DvdStoreRepositoryModelSales {
     @Column(name="fk_movies")
     private int FKMovies;
     @Column(name="quantity_sales")
-    private float quantityOfSales;
+    private int quantityOfSales;
 }
