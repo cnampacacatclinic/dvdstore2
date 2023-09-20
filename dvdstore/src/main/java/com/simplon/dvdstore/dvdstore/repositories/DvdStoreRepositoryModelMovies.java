@@ -22,7 +22,7 @@ public class DvdStoreRepositoryModelMovies {
     @Column(name="name")
     private String name;
     @Column(name="quantity")
-    private int quantity;
+    private Long quantity;
     @Column (name="price")
     private float price;
 }

@@ -8,11 +8,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import java.util.ArrayList;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
-@RequestMapping("sale")
+@RequestMapping("sales")
 public class DvdStoreControllerSales {
     @Autowired
     private DvdStoreServiceSales dvdStoreService;
@@ -22,4 +24,9 @@ public class DvdStoreControllerSales {
     public DvdStoreRepositoryModelSales addSales(@RequestBody DvdStoreRepositoryModelSales sale) {
         return dvdStoreService.save(sale);
     }
+
+    /*@GetMapping("/")
+    public ArrayList<DvdStoreDtoSales> getAllCustomers() {
+        return dvdStoreService.findAll();
+    }*/
 }

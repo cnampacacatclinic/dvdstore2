@@ -6,6 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.data.annotation.CreatedDate;
+
+import java.time.Instant;
+import java.util.Date;
 
 @Entity
 @Table(name = "sales")
@@ -29,4 +33,7 @@ public class DvdStoreRepositoryModelSales {
 
     @Column(name = "quantity_sales")
     private Long quantityOfSales;
+
+    @Column(name="date")
+    private Date date;
 }

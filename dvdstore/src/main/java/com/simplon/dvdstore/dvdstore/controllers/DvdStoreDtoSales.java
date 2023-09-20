@@ -1,4 +1,6 @@
 package com.simplon.dvdstore.dvdstore.controllers;
 
-public record DvdStoreDtoSales(int FKUsers, int FKMovies, float quantityOfSales) {
+import java.util.Date;
+
+public record DvdStoreDtoSales(Long FKUsers, Long FKMovies, float quantityOfSales,Date date) {
 }

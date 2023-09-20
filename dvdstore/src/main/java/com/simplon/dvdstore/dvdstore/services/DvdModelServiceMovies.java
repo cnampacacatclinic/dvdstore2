@@ -12,6 +12,6 @@ public class DvdModelServiceMovies {
 
     String genre;
     String name;
-    int quantity;
+    Long quantity;
     float price;
 }

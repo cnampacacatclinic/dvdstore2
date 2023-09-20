@@ -8,6 +8,6 @@ import java.util.ArrayList;
 public interface DvdStoreRepositoryInterfaceMovies extends CrudRepository<DvdStoreRepositoryModelMovies,Long> {
 
     //d'abbord créer une methode dans le repostitory avant de l'utiliser dans le service et le crontoller
-    //@ManyToMany(mappedBy = "movies")
+
     ArrayList<DvdStoreRepositoryModelMovies> findAll();
 }
