@@ -24,7 +24,7 @@ public class DvdStoreServiceCustomers {
         ArrayList<DvdStoreDtoCustomers> customersList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelCustomers customer : customerList){
-            DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(customer.getFirstName(), customer.getLastName(), customer.getMail(),customer.getPhoneNumber(),customer.getStreetNumber(),customer.getStreetName(), customer.getPostcode(),customer.getCity(),customer.getCountry());
+            DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(customer.getFirstName(), customer.getLastName(), customer.getMail(),customer.getPhoneNumber(),customer.getStreetNumber(),customer.getStreetName(), customer.getPostcode(),customer.getCity(),customer.getVoie());
         }
 
         return customersList;

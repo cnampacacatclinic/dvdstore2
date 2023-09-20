@@ -12,9 +12,9 @@ public class DvdModelServiceCustomers {
     private String lastName;
     private String mail;
     private String phoneNumber;
-    private String streetNumber;
+    private Long streetNumber;
     private String streetName;
-    private String postcode;
+    private Long postcode;
     private String city;
-    private String country;
+    private String voie;
 }

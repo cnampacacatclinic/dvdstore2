@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class DvdStoreRepositoryModelMovies {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@OneToMany
     private Long id;
     @Column(name="genre")
     private String genre;

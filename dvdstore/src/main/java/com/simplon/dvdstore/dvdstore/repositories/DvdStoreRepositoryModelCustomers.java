@@ -13,6 +13,7 @@ import lombok.NoArgsConstructor;
 public class DvdStoreRepositoryModelCustomers {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@OneToMany
     private Long id;
     @Column(name="first_name")
     private String firstName;
@@ -23,13 +24,13 @@ public class DvdStoreRepositoryModelCustomers {
     @Column(name="phone_number")
     private String phoneNumber;
     @Column(name="street_number")
-    private String streetNumber;
+    private Long streetNumber;
     @Column(name="street_name")
     private String streetName;
     @Column(name="postcode")
-    private String postcode;
+    private Long postcode;
     @Column(name="city")
     private String city;
-    @Column(name="country")
-    private String country;
+    @Column(name="voie")
+    private String voie;
 }

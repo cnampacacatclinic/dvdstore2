@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "sales")
@@ -14,10 +16,17 @@ public class DvdStoreRepositoryModelSales {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name="fk_users")
-    private int FKUsers;
-    @Column(name="fk_movies")
-    private int FKMovies;
-    @Column(name="quantity_sales")
-    private int quantityOfSales;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_users")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    DvdStoreRepositoryModelCustomers FKUsers;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "fk_movies")
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    DvdStoreRepositoryModelMovies FKMovies;
+
+    @Column(name = "quantity_sales")
+    private Long quantityOfSales;
 }

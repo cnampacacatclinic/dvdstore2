@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DvdModelServiceSales {
-    private int FKUsers;
-    private int FKMovies;
-    private float quantityOfSales;
+    private Long FKUsers;
+    private Long FKMovies;
+    private Long quantityOfSales;
 }
