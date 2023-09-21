@@ -4,11 +4,10 @@ import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
-import org.springframework.data.annotation.CreatedDate;
 
-import java.time.Instant;
 import java.util.Date;
 
 @Entity
@@ -21,12 +20,12 @@ public class DvdStoreRepositoryModelSales {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "fk_users")
     @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelCustomers FKUsers;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne()
     @JoinColumn(name = "fk_movies")
     @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelMovies FKMovies;
@@ -34,6 +33,9 @@ public class DvdStoreRepositoryModelSales {
     @Column(name = "quantity_sales")
     private Long quantityOfSales;
 
+    @CreationTimestamp
     @Column(name="date")
     private Date date;
+
+    //private Long date;
 }

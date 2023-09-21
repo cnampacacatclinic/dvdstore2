@@ -25,4 +25,6 @@ public class DvdStoreRepositoryModelMovies {
     private Long quantity;
     @Column (name="price")
     private float price;
+
+
 }

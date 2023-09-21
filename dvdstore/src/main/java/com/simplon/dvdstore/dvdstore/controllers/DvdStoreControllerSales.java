@@ -21,12 +21,19 @@ public class DvdStoreControllerSales {
 
     // Ajouter une nouvelle vente
     @PostMapping("/")
+    //public DvdStoreRepositoryModelSales addSales(@RequestBody DvdStoreDtoSales sale) {
     public DvdStoreRepositoryModelSales addSales(@RequestBody DvdStoreRepositoryModelSales sale) {
         return dvdStoreService.save(sale);
-    }
+    }/**/
 
-    /*@GetMapping("/")
+    @GetMapping("/")
     public ArrayList<DvdStoreDtoSales> getAllCustomers() {
         return dvdStoreService.findAll();
-    }*/
+    }
+
+    @DeleteMapping("/{id}")
+    public boolean deleteDvd(@PathVariable Long id){
+        return dvdStoreService.delete(id);
+    }
+
 }

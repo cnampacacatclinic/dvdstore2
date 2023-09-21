@@ -9,4 +9,5 @@ import java.util.ArrayList;
 
 public interface DvdStoreRepositoryInterfaceSales extends CrudRepository<DvdStoreRepositoryModelSales,Long> {
     ArrayList<DvdStoreRepositoryModelSales> findAll();
+    //DvdStoreRepositoryModelSales save(DvdStoreRepositoryModelSales sale, Long id, Long id1);
 }

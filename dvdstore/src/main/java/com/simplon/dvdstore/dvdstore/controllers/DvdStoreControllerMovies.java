@@ -21,13 +21,13 @@ public class DvdStoreControllerMovies {
     private DvdStoreServiceMovies dvdStoreService;
 
     //chemin http://localhost:8080/dvds/home
-    @GetMapping("/home")
+    @GetMapping("/")
     public ArrayList<DvdStoreDtoMovies> getAllDvds() {
         return dvdStoreService.findAll();
     }
 
     // Ajouter un nouveau DVD grace  la methode save dans DvdStoreService
-    @PostMapping("/add")
+    @PostMapping("/")
     public DvdStoreRepositoryModelMovies addDvd(@RequestBody DvdStoreRepositoryModelMovies dvd) {
         return dvdStoreService.save(dvd);
     }
