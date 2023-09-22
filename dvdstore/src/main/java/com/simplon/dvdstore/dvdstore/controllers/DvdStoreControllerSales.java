@@ -1,6 +1,7 @@
 package com.simplon.dvdstore.dvdstore.controllers;
 
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelSales;
+import com.simplon.dvdstore.dvdstore.services.DvdModelServiceSales;
 import com.simplon.dvdstore.dvdstore.services.DvdStoreServiceSales;
 import org.springframework.web.bind.annotation.*;
 import lombok.AllArgsConstructor;
@@ -21,14 +22,20 @@ public class DvdStoreControllerSales {
 
     // Ajouter une nouvelle vente
     @PostMapping("/")
-    //public DvdStoreRepositoryModelSales addSales(@RequestBody DvdStoreDtoSales sale) {
-    public DvdStoreRepositoryModelSales addSales(@RequestBody DvdStoreRepositoryModelSales sale) {
-        return dvdStoreService.save(sale);
-    }/**/
+    //On type boulean pour afficher true si la requette a réussi
+    public boolean addSales(@RequestBody DvdStoreDtoSales sale) {//ici on reçoit un model du dto
+        //Comme on reçoit un model Dto, on doit maintenant le transformer en model service
+        DvdModelServiceSales dvdModelServiceSales = new DvdModelServiceSales(
+            //ici nous devons donner les renseignements suivants pour construire notre vente
+            sale.customer_id(), sale.movie_id(),sale.quantityOfSales(), sale.date()
+        );
+        return dvdStoreService.save(dvdModelServiceSales);
+    }
 
     @GetMapping("/")
     public ArrayList<DvdStoreDtoSales> getAllCustomers() {
-        return dvdStoreService.findAll();
+        //return dvdStoreService.findAll();
+        return null;
     }
 
     @DeleteMapping("/{id}")

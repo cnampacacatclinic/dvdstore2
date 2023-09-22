@@ -13,8 +13,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DvdModelServiceSales {
-    private Long FKUsers;
-    private Long FKMovies;
+    private Long customerId;
+    private Long movieId;
     private Long quantityOfSales;
     private Date date;
 }

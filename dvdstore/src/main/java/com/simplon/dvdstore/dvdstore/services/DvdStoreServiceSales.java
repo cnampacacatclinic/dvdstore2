@@ -5,8 +5,6 @@ import com.simplon.dvdstore.dvdstore.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-
 @Service
 public class DvdStoreServiceSales {
     @Autowired
@@ -22,24 +20,24 @@ public class DvdStoreServiceSales {
     DvdStoreDtoIdCustomers customerDto;
 
     //Insertion en BDD d'une vente
-    //public DvdStoreRepositoryModelSales save(DvdStoreDtoSales sale) {
-    public DvdStoreRepositoryModelSales save(DvdStoreRepositoryModelSales sale) {
-        return dvdStoreRepository.save(sale);
+    public boolean save(DvdModelServiceSales sale) {
+        //Nous avons besoin de l'id du film et de l'id du client
+        //get() est utilisé ici parce que l'id est obtionnel il peut être null et le get va le récupérer
+        DvdStoreRepositoryModelMovies movie = dvdStoreRepositoryMovie.findById(sale.getMovieId()).get();
+        DvdStoreRepositoryModelCustomers customer = dvdStoreRepositoryCostumer.findById(sale.getCustomerId()).get();
+        //Ici on est obligé de transformer notre model DTo en model repository
+        DvdStoreRepositoryModelSales dvdStoreRepositoryModelSales = new DvdStoreRepositoryModelSales(
+                //On redonne les données necessaires à construire notre vente
+                customer, movie, sale.getQuantityOfSales(), sale.getDate()
+        );
+        //on retourne à la fonction sale du repository la vente construite ci-dessus
+        //si ce n'est pas null, on affiche true
+        return dvdStoreRepository.save(dvdStoreRepositoryModelSales) != null;
     }
 
-    /*public DvdStoreRepositoryModelSales save2(DvdStoreDtoSales sale,DvdStoreDtoIdMovies movieDto,DvdStoreDtoIdCustomers customerDto) {
-        return dvdStoreRepository.save(sale.quantityOfSales(),movieDto.id(),customerDto.id());
-    }/**/
-
-    //public DvdStoreRepositoryModelSales addSale(DvdStoreDtoSales sale) {
-        //DvdStoreRepositoryModelSales newSale = new DvdStoreRepositoryModelSales(sale.FKUsers(),sale.FKMovies(),sale.quantityOfSales(),sale.date());
-
-        //return dvdStoreRepository.save(newSale);
-    //}
-
     //afficher toutes les ventes
-   public ArrayList<DvdStoreDtoSales> findAll() {
-        ArrayList<DvdStoreRepositoryModelSales> salesList = dvdStoreRepository.findAll();
+   public void findAll() {
+        /*ArrayList<DvdStoreRepositoryModelSales> salesList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDtoSales> salesDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelSales ee : salesList){
@@ -47,7 +45,7 @@ public class DvdStoreServiceSales {
             salesDtoList.add(salesDto);
         }
 
-        return salesDtoList;
+        return salesDtoList;/**/
     }
 
     // Supprimer un DVD par son ID

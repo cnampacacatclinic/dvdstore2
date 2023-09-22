@@ -21,12 +21,12 @@ public class DvdStoreRepositoryModelSales {
     private Long id;
 
     @ManyToOne()
-    @JoinColumn(name = "fk_users")
+    @JoinColumn(name = "fk_users", nullable=true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelCustomers FKUsers;
 
     @ManyToOne()
-    @JoinColumn(name = "fk_movies")
+    @JoinColumn(name = "fk_movies",nullable=true)
     @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelMovies FKMovies;
 
@@ -36,6 +36,13 @@ public class DvdStoreRepositoryModelSales {
     @CreationTimestamp
     @Column(name="date")
     private Date date;
+
+    public DvdStoreRepositoryModelSales(DvdStoreRepositoryModelCustomers FKUsers, DvdStoreRepositoryModelMovies FKMovies, Long quantityOfSales, Date date) {
+        this.FKUsers = FKUsers;
+        this.FKMovies = FKMovies;
+        this.quantityOfSales = quantityOfSales;
+        this.date = date;
+    }
 
     //private Long date;
 }
