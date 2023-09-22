@@ -22,12 +22,10 @@ public class DvdStoreRepositoryModelSales {
 
     @ManyToOne()
     @JoinColumn(name = "fk_users", nullable=true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelCustomers FKUsers;
 
     @ManyToOne()
     @JoinColumn(name = "fk_movies",nullable=true)
-    @OnDelete(action = OnDeleteAction.CASCADE)
     DvdStoreRepositoryModelMovies FKMovies;
 
     @Column(name = "quantity_sales")

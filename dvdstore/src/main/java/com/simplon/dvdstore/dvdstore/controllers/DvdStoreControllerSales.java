@@ -34,8 +34,7 @@ public class DvdStoreControllerSales {
 
     @GetMapping("/")
     public ArrayList<DvdStoreDtoSales> getAllCustomers() {
-        //return dvdStoreService.findAll();
-        return null;
+        return dvdStoreService.findAll();
     }
 
     @DeleteMapping("/{id}")

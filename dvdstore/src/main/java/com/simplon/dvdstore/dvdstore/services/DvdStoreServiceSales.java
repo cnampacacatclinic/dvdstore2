@@ -5,6 +5,8 @@ import com.simplon.dvdstore.dvdstore.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+
 @Service
 public class DvdStoreServiceSales {
     @Autowired
@@ -36,12 +38,13 @@ public class DvdStoreServiceSales {
     }
 
     //afficher toutes les ventes
-   public void findAll() {
-        /*ArrayList<DvdStoreRepositoryModelSales> salesList = dvdStoreRepository.findAll();
+   public ArrayList<DvdStoreDtoSales> findAll() {
+        /**/
+       ArrayList<DvdStoreRepositoryModelSales> salesList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDtoSales> salesDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelSales ee : salesList){
-            DvdStoreDtoSales salesDto = new DvdStoreDtoSales(ee.getFKUsers(),ee.getFKMovies(),ee.getQuantityOfSales(), ee.getDate());
+            DvdStoreDtoSales salesDto = new DvdStoreDtoSales(ee.getFKUsers().getId(),ee.getFKMovies().getId(), ee.getQuantityOfSales(), ee.getDate());
             salesDtoList.add(salesDto);
         }
 
