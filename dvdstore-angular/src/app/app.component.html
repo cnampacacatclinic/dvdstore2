@@ -1,5 +1,5 @@
 <header>
-  <a title="Home" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
+  <!--<a title="Home" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
   <nav>
     <ul>
       <li>
@@ -28,7 +28,7 @@
             <option (click)="handleGenreClickButton('Science-fiction')">Science-fiction</option>
           </select>
         </form>
-      </li><!-- fin li genreListe -->
+      </li>
       <li>
         <form id="formSearch">
           <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText">
@@ -42,6 +42,40 @@
       <a title="Connexion" href="login">Connexion</a>
     </li>
   </ul>
+  
+  </nav>-->
+  <nav id="navbarre" class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="" title="Home">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Genre
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" (click)="handleGenreClickButton('Action')">Action</a>
+            <a class="dropdown-item" (click)="handleGenreClickButton('Aventure')">Aventure</a>
+            <a class="dropdown-item" (click)="handleGenreClickButton('Comedie')">comédie</a>
+            <a class="dropdown-item" (click)="handleGenreClickButton('Drame')">Drame</a>
+            <a class="dropdown-item" (click)="handleGenreClickButton('Science-fiction')">Science-fiction</a>
+            <a class="dropdown-item" (click)="handleGenreClickButton('Thriller')">Thriller</a>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <form id="formSearch" class="form-inline my-2 my-lg-0">
+      <input (click)="handleButtonSearchClick()" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button (click)="handleButtonSearchClick()" class="violet my-2 my-sm-0" type="submit">...</button>
+    </form>
+  
+    <a id="connexion" title="Connexion" href="login">Connexion</a>
   
   </nav>
 </header>

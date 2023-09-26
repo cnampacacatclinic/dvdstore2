@@ -1,10 +1,18 @@
 #banniere{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     width: 100%;
     justify-content: space-around;
 }
 #banniere img{
     height: 380px;
     width: auto;
+}
+@media (max-width: 800px) {
+    #banniere img{
+        width: 300px;
+        height: auto;
+        margin-bottom: 10px;
+    }
 }
