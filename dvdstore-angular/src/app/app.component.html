@@ -1,31 +1,49 @@
 <header>
-  <!--<nav>
+  <a title="Home" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
+  <nav>
     <ul>
       <li>
-        <button (click)="handleGenreClickButton('action')">
-          Action
-        </button>
+        <a title="Home" href="">Home</a>
       </li>
+      <li id="genreListe">
+          <form>
+          <select>
+            <option value="">Genre</option>
+            <option (click)="handleGenreClickButton('Action')">
+                Action
+            </option>
+            <option (click)="handleGenreClickButton('Aventure')">
+                Aventure
+            </option>
+            <option (click)="handleGenreClickButton('Horreur')">
+                Horreur
+            </option>
+            <option (click)="handleGenreClickButton('Comedie')">
+                Comedie
+            </option>
+            <option (click)="handleGenreClickButton('Thriller')">
+                Thriller
+            </option>
+            <option (click)="handleGenreClickButton('Drame')">Drame</option>
+            <option (click)="handleGenreClickButton('Science-fiction')">Science-fiction</option>
+          </select>
+        </form>
+      </li><!-- fin li genreListe -->
       <li>
-        <button (click)="handleGenreClickButton('aventure')">
-          Aventure
-        </button>
+        <form id="formSearch">
+          <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText">
+          <button (click)="handleButtonSearchClick()">...</button>
+        </form>
       </li>
-      <li>
-        <a href="#">Science-fiction</a>
-      </li>
-      <li>
-        <a href="#">Comedie</a>
-      </li>
-    </ul>
-  </nav>-->
-  <img src="assets/img/logo.png" alt="Logo de DVDStore">
-  <form>
-    <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText">
-    <button (click)="handleButtonSearchClick()">...</button>
-  </form>
+    <li >
+      <a title="Connexion" href="login">Connexion</a>
+    </li>
+  </ul>
+  </nav>
 </header>
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>
 <footer>
   <p>Copyright &copy;</p>
 </footer>

@@ -1,39 +1,4 @@
-<main>
-    <nav>
-        <ul>
-          <li>
-            <a title="Home" href="">Home</a>
-          </li>
-          <li id="genreListe">
-              <form>
-              <select>
-                <option value="">Genre</option>
-                <option (click)="handleGenreClickButton('Action')">
-                    Action
-                </option>
-                <option (click)="handleGenreClickButton('Aventure')">
-                    Aventure
-                </option>
-                <option (click)="handleGenreClickButton('Horreur')">
-                    Horreur
-                </option>
-                <option (click)="handleGenreClickButton('Comedie')">
-                    Comedie
-                </option>
-                <option (click)="handleGenreClickButton('Thriller')">
-                    Thriller
-                </option>
-                <option (click)="handleGenreClickButton('Drame')">Drame</option>
-                <option (click)="handleGenreClickButton('Science-fiction')">Science-fiction</option>
-              </select>
-            </form>
-          </li><!-- fin li genreListe -->
-        <li >
-          <a title="Connexion" href="login">Connexion</a>
-        </li>
-      </ul>
-      </nav>
-    <section>
+<section>
       <h1>Bienvenue sur DVD Store</h1>
       <div *ngFor="let dvd of dvdToShow; let index in dvdToShow">
         <!-- pour afficher grace à l'id -->
@@ -43,5 +8,5 @@
                 <h3>{{ dvd.genre }}</h3>
             </a>
         </div>
-    </section>
-  </main>
+</section>
+

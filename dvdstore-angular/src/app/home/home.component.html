@@ -1,5 +1,4 @@
-<main>
-    <nav>
+<!--<nav>
         <ul>
           <li>
             <a title="Home" href="">Home</a>
@@ -27,21 +26,17 @@
                 <option (click)="handleGenreClickButton('Science-fiction')">Science-fiction</option>
               </select>
             </form>
-          </li><!-- fin li genreListe -->
+          </li>
         <li >
           <a title="Connexion" href="login">Connexion</a>
         </li>
       </ul>
-      </nav>
+      </nav>-->
     <section>
       <h1>Bienvenue sur DVD Store</h1>
-      <div *ngFor="let dvd of dvdToShow; let index in dvdToShow">
-        <!-- pour afficher grace à l'id -->
-            <a [href]="'/dvds/'+index">
-                <img [src]="dvd.imgPath" alt="dvd" style="width: 200px">
-                <h2>{{ dvd.name }}</h2>
-                <h3>{{ dvd.genre }}</h3>
-            </a>
-        </div>
+      <img alt="Bannière du DVDStore" src="assets/img/1dvd.jpg">
+      <img alt="Bannière du DVDStore" src="assets/img/4dvd.jpg">
+      <img alt="Bannière du DVDStore" src="assets/img/2dvd.jpg">
+      <p> Explorez, choisissez et commandez vos DVD préférés dès maintenant !<br>
+        Vous trouverez les dernières sorties, les classiques incontournables et les éditions spéciales pour enrichir votre collection.</p>
     </section>
-  </main>
