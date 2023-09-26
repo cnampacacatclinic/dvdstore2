@@ -1,0 +1,10 @@
+#banniere{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+}
+#banniere img{
+    height: 380px;
+    width: auto;
+}

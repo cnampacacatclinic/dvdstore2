@@ -1,1 +1,97 @@
 /* You can add global styles to this file, and also import other style files */
+@font-face {
+    font-family: 'Actor';
+    src: url('/assets/font/Actor-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Taviraj';
+    src: url('/assets/font/static/Taviraj-Regular.ttf') format('truetype');
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    font-family:'Taviraj';
+    font-size: 1.5em;
+    text-align: center;
+}
+h1{
+    font-family:'Actor';
+    font-size: 2em;
+}
+h2{
+    font-family:'Actor';
+    font-size: 1.8em;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    font-family:'Actor';
+    font-size: 1em;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+header img{
+    width: 3em;
+    margin: 5px;
+    margin-left: 25px;
+}
+footer{
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+}
+footer p{
+    margin-left: 30px;
+}
+
+a:link {
+    color: #540B82;
+    text-decoration: none;   
+}
+
+a:hover {
+    transition-duration: 2s;
+    color: #333;
+    font-style: italic;
+}
+
+button {
+    border: none;
+    background-color: #540B82;
+    color: #fff;
+    font-family:'Actor';
+}
+button:hover{
+    transition-duration: 2s;
+    background-color: #111;
+}
+
+button .danger{
+    background-color: #F11818;
+}
+
+button .danger:hover{
+    transition-duration: 2s;
+    background-color: #9b4d4d;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+    background-color: #eee;
+    align-items: center;
+}
+section img{
+    width: 350px;
+}
