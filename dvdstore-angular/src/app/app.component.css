@@ -66,4 +66,5 @@ nav select{
     text-transform: uppercase !important;
     font-size:1em;
     line-height: 1.7;
+    box-shadow:none;
 }

@@ -6,13 +6,25 @@ import { HomeComponent } from './home/home.component';
 import { FormsModule } from '@angular/forms';
 import { LoginComponent } from './login/login.component';
 import { AdminHomeComponent } from './admin-home/admin-home.component';
+import { DetailDvdComponent } from './detail-dvd/detail-dvd.component';
+import { ModifierDvdComponent } from './modifier-dvd/modifier-dvd.component';
+import { AjouterDvdComponent } from './ajouter-dvd/ajouter-dvd.component';
+import { GestionClientComponent } from './gestion-client/gestion-client.component';
+import { CreerVenteComponent } from './creer-vente/creer-vente.component';
+import { ListeClientComponent } from './liste-client/liste-client.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    AdminHomeComponent
+    AdminHomeComponent,
+    DetailDvdComponent,
+    ModifierDvdComponent,
+    AjouterDvdComponent,
+    GestionClientComponent,
+    CreerVenteComponent,
+    ListeClientComponent
   ],
   imports: [
     BrowserModule,
