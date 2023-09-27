@@ -12,6 +12,7 @@ import { AjouterDvdComponent } from './ajouter-dvd/ajouter-dvd.component';
 import { GestionClientComponent } from './gestion-client/gestion-client.component';
 import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
+import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { ListeClientComponent } from './liste-client/liste-client.component';
     AjouterDvdComponent,
     GestionClientComponent,
     CreerVenteComponent,
-    ListeClientComponent
+    ListeClientComponent,
+    ListeVenteComponent
   ],
   imports: [
     BrowserModule,

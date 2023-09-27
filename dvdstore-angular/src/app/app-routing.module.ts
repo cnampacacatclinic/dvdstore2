@@ -9,6 +9,7 @@ import { AjouterDvdComponent } from './ajouter-dvd/ajouter-dvd.component';
 import { GestionClientComponent } from './gestion-client/gestion-client.component';
 import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
+import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,11 @@ const routes: Routes = [
   {
     path :'liste-client',
     component: ListeClientComponent
+  }
+  ,
+  {
+    path :'liste-vente',
+    component: ListeVenteComponent
   }
 
 ];
