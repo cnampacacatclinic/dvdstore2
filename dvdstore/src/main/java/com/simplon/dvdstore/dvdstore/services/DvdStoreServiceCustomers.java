@@ -23,11 +23,28 @@ public class DvdStoreServiceCustomers {
         ArrayList<DvdStoreRepositoryModelCustomers> customerList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDtoCustomers> customersList = new ArrayList<>();
 
-        for(DvdStoreRepositoryModelCustomers customer : customerList){
+        /*for(DvdStoreRepositoryModelCustomers customer : customerList){
             DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(customer.getFirstName(), customer.getLastName(), customer.getMail(),customer.getPhoneNumber(),customer.getStreetNumber(),customer.getStreetName(), customer.getPostcode(),customer.getCity(),customer.getVoie());
+        }/**/
+        for (DvdStoreRepositoryModelCustomers customer : customerList) {
+            DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(
+                    customer.getFirstName(),
+                    customer.getLastName(),
+                    customer.getMail(),
+                    customer.getPhoneNumber(),
+                    customer.getStreetNumber(),
+                    customer.getStreetName(),
+                    customer.getPostcode(),
+                    customer.getCity(),
+                    customer.getVoie()
+            );
+            customersList.add(customersDto); // Ajoutez le client à la liste
         }
+
 
         return customersList;
     }
+
+
 
 }
