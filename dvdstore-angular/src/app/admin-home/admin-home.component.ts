@@ -1,10 +1,13 @@
-import { Component } from '@angular/core';
-import { GenreEnum } from '../utils/enum/GenreEnum';
+import { Component, OnInit } from '@angular/core';
+import { DvdServiceService, DvdGetAllDTO } from '../dvd-service.service';
+
 
 export interface Dvd {
-  name: string,
-  genre: GenreEnum,
-  imgPath: string
+  id: number;
+  genre: string;
+  name: string;
+  price: number;
+  quantity: number;
 }
 
 @Component({
@@ -12,57 +15,24 @@ export interface Dvd {
   templateUrl: './admin-home.component.html',
   styleUrls: ['./admin-home.component.css']
 })
-export class AdminHomeComponent {
-  dvds : Array<Dvd>  = [
-    {
-      name: 'Faites sauter la banque',
-      genre: GenreEnum.COMEDIE,
-      imgPath :'assets/img/1dvd.jpg'
-    },
-    {
-      name: 'Indiana Jhones',
-      genre: GenreEnum.AVENTURE,
-      imgPath :'assets/img/6dvd.jpg'
-    },
+export class AdminHomeComponent implements OnInit {
+  dvdToShow: Dvd[] = [];
 
-    {
-      name: 'Total recall',
-      genre: GenreEnum.SCIENCE_FICTION,
-      imgPath :'assets/img/2dvd.jpg'
-    },
+  constructor(private dvdService: DvdServiceService) {}
 
-    {
-      name: 'Canailles connection',
-      genre: GenreEnum.COMEDIE,
-      imgPath :'assets/img/3dvd.jpg'
-    },
+  async ngOnInit() {
+    const dvdGetAllDTOs = await this.dvdService.getAllDvd();
 
-    {
-      name: 'Appartement zero',
-      genre: GenreEnum.THRILLER,
-      imgPath :'assets/img/4dvd.jpg'
-    },
-
-    {
-      name: 'Den of thieves',
-      genre: GenreEnum.ACTION,
-      imgPath :'assets/img/5dvd.jpg'
-    }
-  ]
-
-  dvdToShow : Array<Dvd> = []
-
-  genreFilter: string = ''
-
-  constructor() {}
-
-  handleGenreClickButton = (genre : string) => {
-    this.dvdToShow = this.dvds.filter((value) => {
-      return value.genre === genre
-    })
-  }
-
-  ngOnInit() {
-    this.dvdToShow = this.dvds
+    // Mapping des données
+    this.dvdToShow = dvdGetAllDTOs.map((value: DvdGetAllDTO) => {
+      const dvd: Dvd = {
+        id: value.id,
+        genre: value.genre,
+        name: value.name,
+        price: value.price,
+        quantity: value.quantity
+      };
+      return dvd;
+    });
   }
 }
