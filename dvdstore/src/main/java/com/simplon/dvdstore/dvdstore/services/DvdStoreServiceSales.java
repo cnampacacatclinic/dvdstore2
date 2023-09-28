@@ -39,7 +39,6 @@ public class DvdStoreServiceSales {
 
     //afficher toutes les ventes
    public ArrayList<DvdStoreDtoSales> findAll() {
-        /**/
        ArrayList<DvdStoreRepositoryModelSales> salesList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDtoSales> salesDtoList = new ArrayList<>();
 
