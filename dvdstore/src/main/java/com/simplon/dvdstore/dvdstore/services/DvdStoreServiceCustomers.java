@@ -28,6 +28,7 @@ public class DvdStoreServiceCustomers {
         }/**/
         for (DvdStoreRepositoryModelCustomers customer : customerList) {
             DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(
+                    customer.getId(),
                     customer.getFirstName(),
                     customer.getLastName(),
                     customer.getMail(),

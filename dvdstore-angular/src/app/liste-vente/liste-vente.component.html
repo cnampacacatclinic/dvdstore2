@@ -1,25 +1,56 @@
 <section>
+  <h1>Liste des ventes</h1>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Date</th>
+        <th scope="col">Prénom</th>
+        <th scope="col">Nom</th>
+        <th scope="col">DVD</th>
+        <th scope="col">Quandtité</th>
+        <th scope="col">Total</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let sale of saleToShow">
+        <td>12/09/2023</td>
+        <td>{{ customerMap.get(sale.FKUsers)?.firstName }}</td>
+        <td>{{ customerMap.get(sale.FKUsers)?.lastName }}</td>
+        <td>{{ dvdMap.get(sale.FKMovies)?.name }}</td>
+        <td>{{ sale.quantityOfSales }}</td>
+        <td>49.20</td>
+        <td><a class="danger" href="supp">Supprimer</a></td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+<!--<section>
     <h1>Liste des ventes</h1>
-    <table class="table">
+    <table class="table" *ngFor="let sale of saleToShow; let id of saleToShow">
         <thead>
           <tr>
             <th scope="col">Date</th>
             <th scope="col">Prénom</th>
             <th scope="col">Nom</th>
+            <th scope="col">DVD</th>
             <th scope="col">Quandtité</th>
             <th scope="col">Total</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
+        <tbody *ngFor="let dvd of dvdToShow; let id of dvdToShow">
+          <tr *ngFor="let customer of customerToShow; let id of customerToShow">
+            
             <td>12/09/2023</td>
-            <td>Paul</td>
-            <td>Truc</td>
-            <td>8</td>
+            <td *ngIf="reponse1">{{ customer.firstName }}</td>
+            <td *ngIf="reponse1">{{ customer.lastName }}</td>
+            <td *ngIf="reponse2">{{ dvd.name }}</td>
+            <td>{{ sale.quantityOfSales }}</td>
             <td>49.20</td>
             <td><a class="danger" href="supp">Supprimer</a></td>
           </tr>
         </tbody>
       </table>
-</section>
+</section>-->
+

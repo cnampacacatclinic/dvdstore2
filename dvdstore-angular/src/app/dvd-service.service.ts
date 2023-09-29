@@ -17,6 +17,25 @@ export interface DvdGetAllDTO {
   price: number;
   quantity: number;
 }
+export interface SaleGetAllDTO{
+  id: number;
+  FKUsers: number;
+  FKMovies: number;
+  quantityOfSales: number;
+  //date: string;
+}
+export interface CustomerGetAllDTO {
+  id: number;
+  firstName: string;
+  lastName: string;
+  mail: string;
+  phoneNumber: string;
+  streetNumber: number;
+  streetName: string;
+  postcode: number;
+  city: string;
+  voie:string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -29,7 +48,15 @@ export class DvdServiceService {
   getAllDvd = async () => {
     return(await axios.get('http://localhost:8080/dvds/')).data;
   }
+  getAllCustomer = async () => {
+    return(await axios.get('http://localhost:8080/customer/')).data;
+  }
+  getAllSale = async () => {
+    return(await axios.get('http://localhost:8080/sales/')).data;
+  }
   addDvd = ( formData: FormData ) => {axios.post('http://localhost:8080/dvds/', formData)}
+
+  addCustomer = ( formData: FormData ) => {axios.post('http://localhost:8080/customer/', formData)}
 
   /*
   //on recupere un array d'objet avec getall

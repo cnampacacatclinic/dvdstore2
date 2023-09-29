@@ -1,14 +1,14 @@
 <section>
     <h1>Ajouter un DVD</h1>
-    <form id="formConnexion">
+    <form #formData="ngForm" (submit)="form2(formData)">
     <div class="form-group">
     <label for="exampleFormControlInput1">Titre</label>
-        <input type="text" value="">
+        <input [(ngModel)]="dvdObj.name" name="name" type="text">
     </div>
     <div class="form-group">
       <label for="exampleFormControlSelect1">Genre</label>
-      <select id="selectGenre">
-        <option value="">Choisir un genre</option>
+      <select [(ngModel)]="dvdObj.genre" name="genre" id="selectGenre">
+        <option>Choisir un genre</option>
         <option value="1">Action</option>
         <option value="2">Aventure</option>
         <option value="3">Comedie</option>
@@ -17,16 +17,16 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Quantite</label>
-        <input type="text" value="">
+        <input [(ngModel)]="dvdObj.quantity" name="quantity" type="text">
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Prix</label>
-        <input type="text" value="">
+        <input [(ngModel)]="dvdObj.price" name="price" type="text">
     </div>
-    <div class="form-group">
+    <!--<div class="form-group">
         <label for="exampleFormControlFile1">Photo</label>
-        <input type="file" class="form-control-file" id="exampleFormControlFile1">
-    </div>
+        <input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">
+    </div>-->
     <button type="submit">Envoyer</button>
   </form>
 </section>
