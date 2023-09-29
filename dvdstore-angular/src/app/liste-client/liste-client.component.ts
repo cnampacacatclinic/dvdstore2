@@ -26,7 +26,7 @@ export class ListeClientComponent {
 
   async ngOnInit() {
     
-    const customerGetAllDTOs = await this.customerService.getAllDvd();
+    const customerGetAllDTOs = await this.customerService.getAllCustomer();
     this.customerToShow = customerGetAllDTOs.map((value: CustomerGetAllDTO) => {
       const customer: Customer = {
         id: value.id,

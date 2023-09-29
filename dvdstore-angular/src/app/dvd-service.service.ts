@@ -58,6 +58,10 @@ export class DvdServiceService {
 
   addCustomer = ( formData: FormData ) => {axios.post('http://localhost:8080/customer/', formData)}
 
+  addSale = ( formData: FormData ) => {axios.post('http://localhost:8080/sales/', formData)}
+
+  //pu ou patsh pour update
+
   /*
   //on recupere un array d'objet avec getall
   //async pour asynchrone

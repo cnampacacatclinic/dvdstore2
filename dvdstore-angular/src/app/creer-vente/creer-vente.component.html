@@ -1,36 +1,34 @@
 <section>
     <h1>Créer une vente</h1>
-    <form>
+    <form #formData="ngForm" (submit)="formCreateSale(formData)">
     <div class="form-group">
-    <label for="exampleFormControlInput1">Date</label>
-        <input type="text" value="">
+        <label for="exampleFormControlInput1">Date</label>
+        <input [(ngModel)]="saleObjet.date" name="date" type="date">
     </div>
     <div class="form-group">
       <label for="exampleFormControlSelect1">Client</label>
-      <select id="exampleFormControlSelect1">
-        <option value="">Choisir un client</option>
-        <option value="">2</option>
-        <option value="">3</option>
-        <option value="">4</option>
-        <option value="">5</option>
+      <select [(ngModel)]="saleObjet.FKUsers" name="FKUsers" id="exampleFormControlSelect1">
+        <option value=0>Choisir un client</option>
+        <option value=2>2</option>
+        <option value=3>3</option>
+        <option value=4>4</option>
+        <option value=5>5</option>
       </select>
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Quantite</label>
-        <input type="text" value="">
+        <input [(ngModel)]="saleObjet.quantityOfSales" name="quantityOfSales" type="number">
     </div>
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Prix</label>
-        <input type="text" value="">
-    </div>
+    <!--<div class="form-group">
+        <label for="exampleFormControlInput1">Total</label>
+        <input [(ngModel)]="saleObjet.total" name="total" type="text">
+    </div>-->
     <div class="form-group">
         <label for="exampleFormControlSelect1">Dvd</label>
-        <select id="exampleFormControlSelect1">
-          <option value="">Choisir un DVD</option>
-          <option value="">2</option>
-          <option value="">3</option>
-          <option value="">4</option>
-          <option value="">5</option>
+        <select [(ngModel)]="saleObjet.FKMovies" name="FKMovies" id="exampleFormControlSelect1">
+          <option value=0>Choisir un DVD</option>
+          <option *ngFor="let dvd of dvdToShow; let id of dvdToShow" value="{{ dvd.id }}">{{ dvd.name }}</option>
+          
         </select>
       </div>
     <button type="submit">Envoyer</button>
