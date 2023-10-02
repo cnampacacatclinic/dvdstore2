@@ -10,19 +10,24 @@ export interface DvdGetAllDTO {
   imgPath: string
 }*/
 
+let id: number;
+
 export interface DvdGetAllDTO {
   id: number;
   genre: string;
   name: string;
   price: number;
   quantity: number;
+  synopsis: string;
+  imgPath : string;
 }
 export interface SaleGetAllDTO{
   id: number;
   FKUsers: number;
   FKMovies: number;
   quantityOfSales: number;
-  //date: string;
+  date: Date;
+  total:number;
 }
 export interface CustomerGetAllDTO {
   id: number;
@@ -40,6 +45,7 @@ export interface CustomerGetAllDTO {
 @Injectable({
   providedIn: 'root'
 })
+
 export class DvdServiceService {
 
   //constructor(private axios: Axios) { }
@@ -54,13 +60,31 @@ export class DvdServiceService {
   getAllSale = async () => {
     return(await axios.get('http://localhost:8080/sales/')).data;
   }
+
+  getOneDvd =async (id:number) => {
+    return axios.get('http://localhost:8080/dvds/'+ id);
+  }
+
+  getOneCustomer =async (id:number) => {
+    return axios.get('http://localhost:8080/customer/'+ id);
+  }
+
+  getOneSale =async (id:number) => {
+    return axios.get('http://localhost:8080/sales/'+ id);
+  }
+
   addDvd = ( formData: FormData ) => {axios.post('http://localhost:8080/dvds/', formData)}
+
+  updateDvd = ( id:number, formData: FormData ) => {axios.put('http://localhost:8080/dvds/'+ id, formData)}
 
   addCustomer = ( formData: FormData ) => {axios.post('http://localhost:8080/customer/', formData)}
 
+  updateCustomer = ( id:number, formData: FormData ) => {console.log(formData)
+    axios.put('http://localhost:8080/customer/'+ id, formData)}
+
   addSale = ( formData: FormData ) => {axios.post('http://localhost:8080/sales/', formData)}
 
-  //pu ou patsh pour update
+  //put ou patsh pour update
 
   /*
   //on recupere un array d'objet avec getall

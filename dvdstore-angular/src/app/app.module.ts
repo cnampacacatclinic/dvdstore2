@@ -13,6 +13,7 @@ import { GestionClientComponent } from './gestion-client/gestion-client.componen
 import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeVenteComponent } from './liste-vente/liste-vente.component';
+import { ModifierClientComponent } from './modifier-client/modifier-client.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { ListeVenteComponent } from './liste-vente/liste-vente.component';
     GestionClientComponent,
     CreerVenteComponent,
     ListeClientComponent,
-    ListeVenteComponent
+    ListeVenteComponent,
+    ModifierClientComponent
   ],
   imports: [
     BrowserModule,

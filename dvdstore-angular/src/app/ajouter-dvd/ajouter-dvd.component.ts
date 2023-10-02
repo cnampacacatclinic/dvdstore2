@@ -15,7 +15,9 @@ export class AjouterDvdComponent {
     genre:'',
     name:'',
     price:'',
-    quantity:''
+    quantity:'',
+    synopsis: '',
+    imgPath : ''
   }
   
   form2(formData: NgForm) {

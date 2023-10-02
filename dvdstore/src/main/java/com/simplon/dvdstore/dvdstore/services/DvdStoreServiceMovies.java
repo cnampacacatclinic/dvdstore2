@@ -1,6 +1,6 @@
 package com.simplon.dvdstore.dvdstore.services;
 
-import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoMovies;
+import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoIdMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterfaceMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,12 +13,12 @@ public class DvdStoreServiceMovies {
     @Autowired
     private DvdStoreRepositoryInterfaceMovies dvdStoreRepository;
 
-    public ArrayList<DvdStoreDtoMovies> findAll() {
+    public ArrayList<DvdStoreDtoIdMovies> findAll() {
         ArrayList<DvdStoreRepositoryModelMovies> dvdList = dvdStoreRepository.findAll();
-        ArrayList<DvdStoreDtoMovies> dvdDtoList = new ArrayList<>();
+        ArrayList<DvdStoreDtoIdMovies> dvdDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelMovies dvd : dvdList){
-            DvdStoreDtoMovies dvdDto = new DvdStoreDtoMovies(dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice());
+            DvdStoreDtoIdMovies dvdDto = new DvdStoreDtoIdMovies(dvd.getId(),dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice(),dvd.getImgPath(),dvd.getSynopsis());
             dvdDtoList.add(dvdDto);
         }
 
@@ -46,7 +46,7 @@ public class DvdStoreServiceMovies {
             if(dvd2!=null)
             {
                 //les parametres entre les parentheses du new DvdStoreRepositoryModel, ceux sont les mutatteurs du model de service
-                DvdStoreRepositoryModelMovies dvdStoreRepositoryModel = new DvdStoreRepositoryModelMovies(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity(),dvd.getPrice());
+                DvdStoreRepositoryModelMovies dvdStoreRepositoryModel = new DvdStoreRepositoryModelMovies(id,dvd.getGenre(),dvd.getName(),dvd.getQuantity(),dvd.getPrice(),dvd.getImgPath(),dvd.getSynopsis());
                 var x = dvdStoreRepository.save(dvdStoreRepositoryModel);
                 if(x!=null) {
                     return true;

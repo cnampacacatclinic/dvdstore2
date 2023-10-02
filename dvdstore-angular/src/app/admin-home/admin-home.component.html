@@ -1,16 +1,16 @@
 <section>
     <h1>Bienvenue sur DVD Store</h1>
         <div id="listDvd">
-            <figure class="vignetteDvd" *ngFor="let dvd of dvdToShow; let id of dvdToShow">
+            <figure class="vignetteDvd" *ngFor="let dvd of dvdToShow">
                 <!-- pour afficher grace à l'id -->
-                <a [href]="'/dvds/'+id">
+                <a [href]="'/detail-dvd/' + dvd.id">
                 <!--<img [src]="dvd.imgPath" alt="dvd" style="width: 200px">-->
-                <img src="assets/img/4dvd.jpg">
+                <img [src]="dvd.imgPath" alt="dvd">
                 </a>
                 <figcaption>
-                    <a [href]="'/dvds/'+id"><h2>{{ dvd.name }}</h2></a>
-                    <a [href]="'/dvds/'+id"><h3>{{ dvd.genre }}</h3></a>
-                    <a [href]="'/dvds/'+id">Voir les détails</a>
+                    <a [href]="'/detail-dvd/' + dvd.id"><h2>{{ dvd.name }}</h2></a>
+                    <a [href]="'/detail-dvd/' + dvd.id"><h3>{{ dvd.genre }}</h3></a>
+                    <a [href]="'/detail-dvd/' + dvd.id">Voir les détails</a>
                 </figcaption>
             </figure>
         </div>

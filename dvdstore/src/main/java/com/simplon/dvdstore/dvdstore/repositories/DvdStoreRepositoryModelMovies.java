@@ -25,6 +25,9 @@ public class DvdStoreRepositoryModelMovies {
     private Long quantity;
     @Column (name="price")
     private float price;
-
+    @Column(name="img_path")
+    private String imgPath;
+    @Column (name="synopsis")
+    private String synopsis;
 
 }

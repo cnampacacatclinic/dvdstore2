@@ -7,7 +7,8 @@ export interface Sale {
   FKUsers: number;
   FKMovies: number;
   quantityOfSales: number;
-  //date: string;
+  date: Date;
+  total:number;
 }
 export interface Customer {
   id: number;
@@ -36,7 +37,8 @@ export interface Dvd {
 
 export class ListeVenteComponent {
   saleToShow: Sale[] = [];
-  customerMap: Map<number, Customer> = new Map();
+  customerToShow: Customer[] = [];
+
   dvdMap: Map<number, Dvd> = new Map();
 
   constructor(
@@ -47,7 +49,7 @@ export class ListeVenteComponent {
 
   async ngOnInit() {
     const salGetAllDTOs = await this.saleService.getAllSale();
-    const customerGetAllDTOs = await this.customerService.getAllDvd();
+    const customerGetAllDTOs = await this.customerService.getAllCustomer();
     const dvdGetAllDTOs = await this.dvdService.getAllDvd();
 
     // Remplir la carte dvdMap
@@ -61,55 +63,39 @@ export class ListeVenteComponent {
       });
     });
 
-    // Remplir la carte customerMap
-    customerGetAllDTOs.forEach((customer: CustomerGetAllDTO) => {
-      this.customerMap.set(customer.id, {
-        id: customer.id,
-        firstName: customer.firstName,
-        lastName: customer.lastName,
-        mail: customer.mail,
-        phoneNumber: customer.phoneNumber,
-        streetNumber: customer.streetNumber,
-        streetName: customer.streetName,
-        postcode: customer.postcode,
-        city: customer.city,
-        voie: customer.voie
-      });
+    //affiche le client
+    this.customerToShow = customerGetAllDTOs.map((value: CustomerGetAllDTO) => {
+      const customer: Customer = {
+        id: value.id,
+        firstName: value.firstName,
+        lastName: value.lastName,
+        mail: value.mail,
+        phoneNumber: value.phoneNumber,
+        streetNumber: value.streetNumber,
+        streetName: value.streetName,
+        postcode: value.postcode,
+        city: value.city,
+        voie: value.voie
+      };
+      return customer;
     });
 
-    // Filtrer les ventes en fonction de customerMap et dvdMap
     this.saleToShow = salGetAllDTOs.map((value: SaleGetAllDTO) => {
-      const customer = this.customerMap.get(value.FKUsers);
-      const dvd = this.dvdMap.get(value.FKMovies);
-
-      // Filtrer les ventes où le client et le DVD existent
-      if (customer && dvd) {
-        return {
-          id: value.id,
-          FKUsers: value.FKUsers,
-          FKMovies: value.FKMovies,
-          quantityOfSales: value.quantityOfSales,
-          customer: customer,
-          dvd: dvd
-        };
-      } else {
-        return null; // Ignorer les ventes sans client ou DVD correspondant
-      }
+      const sale: Sale = {
+        id: value.id,
+        FKUsers: value.FKUsers,
+        FKMovies: value.FKMovies,
+        date: value.date,
+        quantityOfSales: value.quantityOfSales,
+        total:value.total
+      };
+      return sale;
     });
-  }
 
-  // Méthode pour obtenir le nom du client en fonction de FKUsers
-  getCustomerName(FKUsers: number): string {
-    const customer = this.customerMap.get(FKUsers);
-    return customer ? `${customer.firstName} ${customer.lastName}` : '';
-  }
+    }//fin du ngOnInit
 
-  // Méthode pour obtenir le nom du client en fonction de FKUsers
-  getDvdName(FKMovies: number): string {
-    const dvd = this.dvdMap.get(FKMovies);
-    return dvd ? dvd.name : '';
-  }
-}
+   
+  }//fin de la class ListeVenteComponent
  
 
   /*saleToShow: Sale[] = [];

@@ -17,4 +17,6 @@ public class DvdModelServiceSales {
     private Long movieId;
     private Long quantityOfSales;
     private Date date;
+    private float total;
+
 }

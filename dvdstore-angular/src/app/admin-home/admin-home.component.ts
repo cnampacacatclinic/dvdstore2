@@ -8,6 +8,8 @@ export interface Dvd {
   name: string;
   price: number;
   quantity: number;
+  synopsis: string;
+  imgPath :string;
 }
 
 @Component({
@@ -19,10 +21,11 @@ export class AdminHomeComponent implements OnInit {
   dvdToShow: Dvd[] = [];
 
   constructor(private dvdService: DvdServiceService) {}
+  id: string | null='0';
 
   async ngOnInit() {
     const dvdGetAllDTOs = await this.dvdService.getAllDvd();
-
+    
     // Mapping des données
     this.dvdToShow = dvdGetAllDTOs.map((value: DvdGetAllDTO) => {
       const dvd: Dvd = {
@@ -30,7 +33,9 @@ export class AdminHomeComponent implements OnInit {
         genre: value.genre,
         name: value.name,
         price: value.price,
-        quantity: value.quantity
+        quantity: value.quantity,
+        synopsis: value.synopsis,
+        imgPath :value.imgPath
       };
       return dvd;
     });

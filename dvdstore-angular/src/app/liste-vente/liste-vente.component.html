@@ -9,25 +9,28 @@
         <th scope="col">DVD</th>
         <th scope="col">Quandtité</th>
         <th scope="col">Total</th>
-        <th scope="col">Action</th>
+        <!--<th scope="col">Action</th>-->
       </tr>
     </thead>
     <tbody>
       <tr *ngFor="let sale of saleToShow">
-        <td>12/09/2023</td>
-        <td>{{ customerMap.get(sale.FKUsers)?.firstName }}</td>
-        <td>{{ customerMap.get(sale.FKUsers)?.lastName }}</td>
-        <td>{{ dvdMap.get(sale.FKMovies)?.name }}</td>
+        <td>{{ sale.date }}</td>
+        <!--<div *ngFor="let customer of customerToShow">
+          <td>{{ customer.firstName }}</td>
+          <td>{{ customer.lastName }}</td>
+        </div>-->
+        <td>{{ sale.FKUsers }}</td>
+        <td>{{ sale.FKMovies }}</td>
         <td>{{ sale.quantityOfSales }}</td>
-        <td>49.20</td>
-        <td><a class="danger" href="supp">Supprimer</a></td>
+        <td>{{ sale.total }}</td>
+        <!--<td><a class="danger" href="supp">Supprimer</a></td>-->
       </tr>
     </tbody>
   </table>
 </section>
 <!--<section>
     <h1>Liste des ventes</h1>
-    <table class="table" *ngFor="let sale of saleToShow; let id of saleToShow">
+    <table class="table" *ngFor="let sale of saleToShow>
         <thead>
           <tr>
             <th scope="col">Date</th>

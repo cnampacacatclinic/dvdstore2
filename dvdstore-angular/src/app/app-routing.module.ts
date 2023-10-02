@@ -10,6 +10,7 @@ import { GestionClientComponent } from './gestion-client/gestion-client.componen
 import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeVenteComponent } from './liste-vente/liste-vente.component';
+import { ModifierClientComponent } from './modifier-client/modifier-client.component';
 
 const routes: Routes = [
   {
@@ -25,19 +26,15 @@ const routes: Routes = [
     component: AdminHomeComponent
   },
   {
-    path :'detail-dvd',
+    path :'detail-dvd/:id',
     component: DetailDvdComponent
-  },
-  {
-    path :'modifier-dvd',
-    component: ModifierDvdComponent
   },
   {
     path :'ajouter-dvd',
     component: AjouterDvdComponent
   },
   {
-    path :'gestion-client',
+    path :'ajouter-client',
     component: GestionClientComponent
   },
   {
@@ -52,6 +49,14 @@ const routes: Routes = [
   {
     path :'liste-vente',
     component: ListeVenteComponent
+  },
+  {
+    path :'modifier-client/:id',
+    component: ModifierClientComponent
+  },
+  {
+    path :'modifier-dvd/:id',
+    component: ModifierDvdComponent
   }
 
 ];

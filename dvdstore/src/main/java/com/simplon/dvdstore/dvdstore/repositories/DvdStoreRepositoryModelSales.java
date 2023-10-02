@@ -5,8 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 
 import java.util.Date;
 
@@ -35,12 +33,17 @@ public class DvdStoreRepositoryModelSales {
     @Column(name="date")
     private Date date;
 
-    public DvdStoreRepositoryModelSales(DvdStoreRepositoryModelCustomers FKUsers, DvdStoreRepositoryModelMovies FKMovies, Long quantityOfSales, Date date) {
+    @Column(name="total")
+    private float total;
+
+    public DvdStoreRepositoryModelSales(DvdStoreRepositoryModelCustomers FKUsers, DvdStoreRepositoryModelMovies FKMovies, Long quantityOfSales, Date date,float total) {
         this.FKUsers = FKUsers;
         this.FKMovies = FKMovies;
         this.quantityOfSales = quantityOfSales;
         this.date = date;
+        this.total = total;
     }
+
 
     //private Long date;
 }

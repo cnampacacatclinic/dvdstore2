@@ -3,16 +3,19 @@
     <form #formData="ngForm" (submit)="formCreateSale(formData)">
     <div class="form-group">
         <label for="exampleFormControlInput1">Date</label>
-        <input [(ngModel)]="saleObjet.date" name="date" type="date">
+        <input [(ngModel)]="saleObjet.date" name="date" type="text">
     </div>
     <div class="form-group">
       <label for="exampleFormControlSelect1">Client</label>
       <select [(ngModel)]="saleObjet.FKUsers" name="FKUsers" id="exampleFormControlSelect1">
-        <option value=0>Choisir un client</option>
-        <option value=2>2</option>
-        <option value=3>3</option>
-        <option value=4>4</option>
-        <option value=5>5</option>
+        <option *ngFor="let customer of customerToShow" value="{{ customer.id }}">{{ customer.firstName }} {{ customer.lastName }}</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Dvd</label>
+      <select [(ngModel)]="saleObjet.FKMovies" name="FKMovies" id="exampleFormControlSelect2">
+        <option *ngFor="let dvd of dvdToShow" value="{{ dvd.id }}">terz {{ dvd.id }} {{ dvd.name }}</option>
+        
       </select>
     </div>
     <div class="form-group">
@@ -23,14 +26,6 @@
         <label for="exampleFormControlInput1">Total</label>
         <input [(ngModel)]="saleObjet.total" name="total" type="text">
     </div>-->
-    <div class="form-group">
-        <label for="exampleFormControlSelect1">Dvd</label>
-        <select [(ngModel)]="saleObjet.FKMovies" name="FKMovies" id="exampleFormControlSelect1">
-          <option value=0>Choisir un DVD</option>
-          <option *ngFor="let dvd of dvdToShow; let id of dvdToShow" value="{{ dvd.id }}">{{ dvd.name }}</option>
-          
-        </select>
-      </div>
     <button type="submit">Envoyer</button>
   </form>
 </section>

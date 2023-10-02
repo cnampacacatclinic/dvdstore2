@@ -46,6 +46,31 @@ public class DvdStoreServiceCustomers {
         return customersList;
     }
 
-
+    public boolean updateById(Long id, DvdModelServiceCustomers customer) {
+        //Service a reçu un DTO de la part du controller
+        //Le repository permet d'obtenir les models getters  setters etc..
+        if (id != null) {
+            DvdStoreRepositoryModelCustomers customer2 = dvdStoreRepository.findById(id).orElse(null);
+            if(customer2!=null)
+            {
+                //les parametres entre les parentheses du new customerStoreRepositoryModel, ceux sont les mutatteurs du model de service
+                DvdStoreRepositoryModelCustomers customerStoreRepositoryModel = new DvdStoreRepositoryModelCustomers(id,customer.getFirstName(),customer.getLastName(),customer.getMail(),customer.getPhoneNumber(),customer.getStreetNumber(),customer.getStreetName(),customer.getPostcode(),customer.getCity(),customer.getVoie());
+                var x = dvdStoreRepository.save(customerStoreRepositoryModel);
+                if(x!=null) {
+                    return true;
+                }else {
+                    return false;
+                }
+            }
+        }else {
+            return false;
+        }
+        return false;
+    }
+    // Obtenir un customer par son ID
+    public DvdStoreRepositoryModelCustomers findById(Long id) {
+        //le orElse c'est parce que l'identifiant n'existe peut-être pas
+        return dvdStoreRepository.findById(id).orElse(null);
+    }
 
 }

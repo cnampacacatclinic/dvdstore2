@@ -14,4 +14,6 @@ public class DvdModelServiceMovies {
     String name;
     Long quantity;
     float price;
+    String imgPath;
+    String synopsis;
 }

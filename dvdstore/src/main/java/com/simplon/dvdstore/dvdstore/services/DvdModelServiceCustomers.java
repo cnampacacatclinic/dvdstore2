@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DvdModelServiceCustomers {
+    Long id;
     private String firstName;
     private String lastName;
     private String mail;
@@ -17,4 +18,6 @@ public class DvdModelServiceCustomers {
     private Long postcode;
     private String city;
     private String voie;
+
+
 }
