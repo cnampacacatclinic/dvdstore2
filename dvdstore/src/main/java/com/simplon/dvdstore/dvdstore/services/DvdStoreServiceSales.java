@@ -93,11 +93,5 @@ public class DvdStoreServiceSales {
         return dvdStoreRepository.findById(id).orElse(null);
     }
 
-    /****************************** calcul *******************/
-
-    public boolean totalt(){
-        return false;
-
-    }
     
 }
