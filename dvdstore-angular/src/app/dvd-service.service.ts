@@ -26,7 +26,7 @@ export interface SaleGetAllDTO{
   FKUsers: number;
   FKMovies: number;
   quantityOfSales: number;
-  date: Date;
+  date: string;
   total:number;
 }
 export interface CustomerGetAllDTO {

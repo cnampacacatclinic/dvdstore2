@@ -1,7 +1,5 @@
 package com.simplon.dvdstore.dvdstore.services;
 
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelCustomers;
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -13,8 +11,8 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 public class DvdModelServiceSales {
-    private Long customerId;
-    private Long movieId;
+    private Long FKUsers;
+    private Long FKMovies;
     private Long quantityOfSales;
     private Date date;
     private float total;

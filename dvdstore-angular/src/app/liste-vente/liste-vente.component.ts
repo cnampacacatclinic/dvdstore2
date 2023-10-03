@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-
 import { DvdServiceService, CustomerGetAllDTO, SaleGetAllDTO, DvdGetAllDTO} from '../dvd-service.service';
 
 export interface Sale {
@@ -7,7 +6,7 @@ export interface Sale {
   FKUsers: number;
   FKMovies: number;
   quantityOfSales: number;
-  date: Date;
+  date: string;
   total:number;
 }
 export interface Customer {
@@ -28,7 +27,13 @@ export interface Dvd {
   name: string;
   price: number;
   quantity: number;
+  imgPath :string;
+  synopsis:string;
+
 }
+
+let fkDvd:number;
+
 @Component({
   selector: 'app-liste-vente',
   templateUrl: './liste-vente.component.html',
@@ -36,10 +41,38 @@ export interface Dvd {
 })
 
 export class ListeVenteComponent {
-  saleToShow: Sale[] = [];
-  customerToShow: Customer[] = [];
 
-  dvdMap: Map<number, Dvd> = new Map();
+  //il va falloir parcourrir les trois tableau pour avoir les ids et les noms en fonctions
+  //on les comaparera
+  saleToShow: Sale[] = [];
+  saleToShow2: Sale[] = [];
+  saleToShow3: Sale[] = [];
+  customerToShow: Customer[] = [];
+  dvdToShow: Dvd[] = [];
+
+  //on aura besoin d'un objet pour pouvoir l'afficher car on le selectionnera par son id
+  dvdObj = {
+    id:0,
+    name: '',
+    genre: '',
+    quantity : 0,
+    price :0,
+    imgPath :'',
+    synopsis : ''
+  }
+
+  customerObj ={
+    id:0,
+        firstName: '',
+        lastName: '',
+        mail: '',
+        phoneNumber: 0,
+        streetNumber: 0,
+        streetName: '',
+        postcode: 142587,
+        city: '',
+        voie: ''
+  }
 
   constructor(
     private saleService: DvdServiceService,
@@ -52,34 +85,33 @@ export class ListeVenteComponent {
     const customerGetAllDTOs = await this.customerService.getAllCustomer();
     const dvdGetAllDTOs = await this.dvdService.getAllDvd();
 
-    // Remplir la carte dvdMap
-    dvdGetAllDTOs.forEach((dvd: DvdGetAllDTO) => {
-      this.dvdMap.set(dvd.id, {
-        id: dvd.id,
-        genre: dvd.genre,
-        name: dvd.name,
-        price: dvd.price,
-        quantity: dvd.quantity
-      });
-    });
-
-    //affiche le client
-    this.customerToShow = customerGetAllDTOs.map((value: CustomerGetAllDTO) => {
-      const customer: Customer = {
+    //liste des ventes pour obtenie la clef du dvd
+    this.saleToShow2 = salGetAllDTOs.map((value: SaleGetAllDTO) => {
+      const sale: Sale = {
         id: value.id,
-        firstName: value.firstName,
-        lastName: value.lastName,
-        mail: value.mail,
-        phoneNumber: value.phoneNumber,
-        streetNumber: value.streetNumber,
-        streetName: value.streetName,
-        postcode: value.postcode,
-        city: value.city,
-        voie: value.voie
+        FKUsers: 5,
+        FKMovies: value.FKMovies,
+        date: value.date,
+        quantityOfSales: value.quantityOfSales,
+        total:value.total
       };
-      return customer;
+      return sale.FKMovies;
     });
 
+    //liste des ventes pour obtenir la clef du client
+    this.saleToShow3 = salGetAllDTOs.map((value: SaleGetAllDTO) => {
+      const sale: Sale = {
+        id: value.id,
+        FKUsers: value.FKUsers,
+        FKMovies: value.FKMovies,
+        date: value.date,
+        quantityOfSales: value.quantityOfSales,
+        total:value.total
+      };
+      return sale.FKUsers;
+    });
+
+    //liste complete des ventes
     this.saleToShow = salGetAllDTOs.map((value: SaleGetAllDTO) => {
       const sale: Sale = {
         id: value.id,
@@ -92,70 +124,30 @@ export class ListeVenteComponent {
       return sale;
     });
 
+    //obtient un dvd en fonction de l'id etranger
+    this.dvdService.getOneDvd(Number(this.saleToShow2)).then((response) => {
+
+      if(this.saleToShow!=null){
+        const dvd: DvdGetAllDTO = response.data;
+        this.dvdObj = {
+          id: fkDvd,
+          genre: dvd.genre,
+          name: dvd.name,
+          price: dvd.price,
+          quantity: dvd.quantity,
+          imgPath :dvd.imgPath,
+          synopsis: dvd.synopsis
+        }
+      return this.dvdObj;
+    }else{
+      return null;
+    }
+  });
+
+   
+
     }//fin du ngOnInit
 
    
   }//fin de la class ListeVenteComponent
  
-
-  /*saleToShow: Sale[] = [];
-
-  customerToShow: Customer[] = [];
-
-  dvdToShow: Dvd[] = [];
-
-  constructor(private saleService: DvdServiceService,private dvdService: DvdServiceService,private customerService: DvdServiceService) {}
-
-  async ngOnInit() {
-    const salGetAllDTOs = await this.saleService.getAllSale();
-    const customerGetAllDTOs = await this.customerService.getAllDvd();
-    const dvdGetAllDTOs = await this.dvdService.getAllDvd();
-
-    // Mapping des données
-    this.dvdToShow = dvdGetAllDTOs.map((value: DvdGetAllDTO) => {
-      const dvd: Dvd = {
-        id: value.id,
-        genre: value.genre,
-        name: value.name,
-        price: value.price,
-        quantity: value.quantity
-      };
-      return dvd;
-    });
-    // Mapping des données
-    this.saleToShow = salGetAllDTOs.map((value: SaleGetAllDTO) => {
-      const sale: Sale = {
-        id: value.id,
-        FKUsers: value.FKUsers,
-        FKMovies: value.FKMovies,
-        quantityOfSales: value.quantityOfSales
-      };
-      return sale;
-    });
-    this.customerToShow = customerGetAllDTOs.map((value: CustomerGetAllDTO) => {
-      const customer: Customer = {
-        id: value.id,
-        firstName: value.firstName,
-        lastName: value.lastName,
-        mail: value.mail,
-        phoneNumber: value.phoneNumber,
-        streetNumber: value.streetNumber,
-        streetName: value.streetName,
-        postcode: value.postcode,
-        city: value.city,
-        voie: value.voie
-      };
-      return customer;
-    });
-
-    function reponse1(){if(customerGetAllDTOs.id==salGetAllDTOs.FKUsers){
-      return true;
-    }}
-    function reponse2(){
-    if(dvdGetAllDTOs.id==salGetAllDTOs.FKMovies){
-      reponse1
-      return true;
-    }}
-
-  }
-}*/

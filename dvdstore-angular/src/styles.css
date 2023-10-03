@@ -139,6 +139,14 @@ form button{
     align-self: self-end;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
 }
+textarea {
+    margin: 0;
+    margin-bottom: 30px;
+    min-height: 150px;
+    max-height: 350px;
+    border:1px solid #222;
+    width: 100%;
+}
 select{
     width: 300px;
     margin: 10px;

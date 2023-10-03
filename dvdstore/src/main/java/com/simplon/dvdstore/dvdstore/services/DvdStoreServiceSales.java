@@ -25,8 +25,8 @@ public class DvdStoreServiceSales {
     public boolean save(DvdModelServiceSales sale) {
         //Nous avons besoin de l'id du film et de l'id du client
         //get() est utilisé ici parce que l'id est obtionnel il peut être null et le get va le récupérer
-        DvdStoreRepositoryModelMovies movie = dvdStoreRepositoryMovie.findById(sale.getMovieId()).get();
-        DvdStoreRepositoryModelCustomers customer = dvdStoreRepositoryCostumer.findById(sale.getCustomerId()).get();
+        DvdStoreRepositoryModelMovies movie = dvdStoreRepositoryMovie.findById(sale.getFKMovies()).get();
+        DvdStoreRepositoryModelCustomers customer = dvdStoreRepositoryCostumer.findById(sale.getFKUsers()).get();
 
         //on calcule le total
         float totalPrice= movie.getPrice() * sale.getQuantityOfSales();
@@ -73,8 +73,8 @@ public class DvdStoreServiceSales {
 
         DvdStoreRepositoryModelSales ee = dvdStoreRepository.findById(id).get();
         //on obtient le client et le dvd par leur id
-        DvdStoreRepositoryModelMovies movie = dvdStoreRepositoryMovie.findById(sale.getMovieId()).get();
-        DvdStoreRepositoryModelCustomers customer = dvdStoreRepositoryCostumer.findById(sale.getCustomerId()).get();
+        DvdStoreRepositoryModelMovies movie = dvdStoreRepositoryMovie.findById(sale.getFKMovies()).get();
+        DvdStoreRepositoryModelCustomers customer = dvdStoreRepositoryCostumer.findById(sale.getFKUsers()).get();
 
         // on set les données
         ee.setQuantityOfSales(sale.getQuantityOfSales());

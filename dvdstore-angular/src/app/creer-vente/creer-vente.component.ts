@@ -37,7 +37,7 @@ export class CreerVenteComponent {
     FKUsers: 0,
     FKMovies: 0,
     quantityOfSales: 0,
-    date:Date.now(),
+    date:'',
     total:0
   }
 
@@ -54,11 +54,10 @@ export class CreerVenteComponent {
     //on change en numerique les valuer des input qui sont en string
     formData.value.FKMovies = Number(formData.value.FKMovies);
     formData.value.FKUsers = Number(formData.value.FKUsers);
-    formData.value.date = Date.now();
     formData.value.total = 0;
     console.log(formData.value);
     this.dvdService.addSale(formData.value);
-    //alert('Success');
+    alert('Success');
   }
 
   async ngOnInit() {
@@ -71,7 +70,7 @@ export class CreerVenteComponent {
         genre: value.genre,
         name: value.name,
         price: value.price,
-        quantity: value.quantity,
+        quantity: value.quantity
       };
       return dvd;
     });

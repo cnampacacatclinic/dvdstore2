@@ -4,7 +4,7 @@
     <thead>
       <tr>
         <th scope="col">Date</th>
-        <th scope="col">Prénom</th>
+        <!--<th scope="col">Prénom</th>-->
         <th scope="col">Nom</th>
         <th scope="col">DVD</th>
         <th scope="col">Quandtité</th>
@@ -16,11 +16,11 @@
       <tr *ngFor="let sale of saleToShow">
         <td>{{ sale.date }}</td>
         <!--<div *ngFor="let customer of customerToShow">
-          <td>{{ customer.firstName }}</td>
-          <td>{{ customer.lastName }}</td>
+          <td *ngFor="let customer of customerToShow">{{ customer.firstName }}</td>
+          <td *ngFor="let customer of customerToShow">{{ customer.lastName }}</td>
         </div>-->
         <td>{{ sale.FKUsers }}</td>
-        <td>{{ sale.FKMovies }}</td>
+        <td>{{ sale.FKMovies }}{{this.dvdObj.name}}</td>
         <td>{{ sale.quantityOfSales }}</td>
         <td>{{ sale.total }}</td>
         <!--<td><a class="danger" href="supp">Supprimer</a></td>-->

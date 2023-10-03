@@ -1,7 +1,5 @@
 package com.simplon.dvdstore.dvdstore.controllers;
 
-import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelSales;
-import com.simplon.dvdstore.dvdstore.services.DvdModelServiceMovies;
 import com.simplon.dvdstore.dvdstore.services.DvdModelServiceSales;
 import com.simplon.dvdstore.dvdstore.services.DvdStoreServiceSales;
 import org.springframework.web.bind.annotation.*;
@@ -28,7 +26,7 @@ public class DvdStoreControllerSales {
         //Comme on reçoit un model Dto, on doit maintenant le transformer en model service
         DvdModelServiceSales dvdModelServiceSales = new DvdModelServiceSales(
             //ici nous devons donner les renseignements suivants pour construire notre vente
-            sale.customer_id(), sale.movie_id(),sale.quantityOfSales(), sale.date(), sale.total()
+            sale.FKUsers(), sale.FKMovies(),sale.quantityOfSales(), sale.date(), sale.total()
         );
         return dvdStoreService.save(dvdModelServiceSales);
     }
@@ -46,7 +44,7 @@ public class DvdStoreControllerSales {
     //Update
     /*@PutMapping("/{id}")
     public boolean updateDvd(@PathVariable Long id, @RequestBody DvdStoreDtoIdSales sale){
-        DvdModelServiceSales dvdModelService = new DvdModelServiceSales(sale.id(), sale.customer_id(), sale.movie_id(),sale.quantityOfSales());
+        DvdModelServiceSales dvdModelService = new DvdModelServiceSales(sale.id(), sale.FKUsers(), sale.FKMovies(),sale.quantityOfSales());
         return dvdStoreService.updateSale(id,dvdModelService);
     }/**/
 
@@ -54,7 +52,7 @@ public class DvdStoreControllerSales {
     public boolean updateDvd(@PathVariable Long id, @RequestBody DvdModelServiceSales sale) {
         // Créez un objet DvdModelServiceSales à partir des données de la requête
         DvdModelServiceSales dvdModelService = new DvdModelServiceSales(
-                sale.getCustomerId(), sale.getMovieId(), sale.getQuantityOfSales(), sale.getDate(), sale.getTotal()
+                sale.getFKMovies(), sale.getFKMovies(), sale.getQuantityOfSales(), sale.getDate(), sale.getTotal()
         );
 
         // Appelez la méthode de mise à jour dans le service

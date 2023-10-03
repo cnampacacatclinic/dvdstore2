@@ -2,7 +2,7 @@
     <h1>Modifier le DVD</h1>
     <div id="modif">
         <figure>
-            <img [src]="dvdObj.imgPath" alt="couverture du dvd">
+            <img [src]="'assets/img/' + dvdObj.imgPath" alt="couverture du dvd">
         </figure>
         <div id="modif2">
         <form  enctype="multipart/form-data" #formData="ngForm" (submit)="formUpdate(formData)">
@@ -14,11 +14,12 @@
         <div class="form-group">
           <label for="exampleFormControlSelect1">Genre</label>
           <select [(ngModel)]="dvdObj.genre" name="genre" id="selectGenre">
-            <option>Choisir un genre</option>
-            <option value="1">Action</option>
-            <option value="2">Aventure</option>
-            <option value="3">Comedie</option>
-            <option value="4">Drame</option>
+            <option value="Action">Action</option>
+            <option value="Aventure">Aventure</option>
+            <option value="Comedie">Comedie</option>
+            <option value="Drame">Drame</option>
+            <option value="Science-fiction">Science-fiction</option>
+            <option value="Thriller">Thriller</option>
           </select>
         </div>
         <div class="form-group">
@@ -30,13 +31,13 @@
           <input [(ngModel)]="dvdObj.price" name="price" type="text">
       </div>
       <div class="form-group">
-        <label for="exampleFormControlTextarea1">Synopsis</label>
-        <textarea [(ngModel)]="dvdObj.synopsis" name="synopsis" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-    </div>
+        <label for="exampleFormControlFile1">Photo</label>
+        <input [(ngModel)]="dvdObj.imgPath" name="imgPath" type="text">
+        <!--<input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">-->
+      </div>
       <div class="form-group">
-          <label for="exampleFormControlFile1">Photo</label>
-          <input [(ngModel)]="dvdObj.imgPath" name="imgPath" type="text">
-          <!--<input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">-->
+        <label for="exampleFormControlTextarea1">Synopsis</label>
+        <textarea [(ngModel)]="dvdObj.synopsis" name="synopsis" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
       <button type="submit">Envoyer</button>
       </form>
