@@ -11,6 +11,7 @@ import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 import { ModifierClientComponent } from './modifier-client/modifier-client.component';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 
 const routes: Routes = [
   {
@@ -57,6 +58,10 @@ const routes: Routes = [
   {
     path :'modifier-dvd/:id',
     component: ModifierDvdComponent
+  },
+  {
+    path :'creation-compte',
+    component: CreationCompteComponent
   }
 
 ];

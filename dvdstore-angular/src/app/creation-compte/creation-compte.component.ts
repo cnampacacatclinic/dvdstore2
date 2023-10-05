@@ -3,23 +3,22 @@ import { DvdServiceService} from '../dvd-service.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-creation-compte',
+  templateUrl: './creation-compte.component.html',
+  styleUrls: ['./creation-compte.component.css']
 })
-
-export class LoginComponent {
+export class CreationCompteComponent {
 
   constructor(private dvdService: DvdServiceService){}
 
   loginObjet={
-    "login": '',
+    "username": '',
      "password": ''
   }
 
-  formConnexion(formData: NgForm) {
+  formCreationcompte(formData: NgForm) {
       console.log(formData.value);
-      this.dvdService.connexion(formData.value);
+      this.dvdService.register(formData.value);
       alert('Success');
   }
 

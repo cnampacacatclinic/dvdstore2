@@ -42,6 +42,7 @@ export interface CustomerGetAllDTO {
   voie:string;
 }
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -77,12 +78,18 @@ export class DvdServiceService {
 
   updateDvd = ( id:number, formData: FormData ) => {axios.put('http://localhost:8080/dvds/'+ id, formData)}
 
+  delDvd = ( id:number ) => {axios.delete('http://localhost:8080/dvds/'+ id)}
+
   addCustomer = ( formData: FormData ) => {axios.post('http://localhost:8080/customer/', formData)}
 
   updateCustomer = ( id:number, formData: FormData ) => {console.log(formData)
     axios.put('http://localhost:8080/customer/'+ id, formData)}
 
   addSale = ( formData: FormData ) => {axios.post('http://localhost:8080/sales/', formData)}
+
+  register = ( formData: FormData ) => {axios.post('http://localhost:8080/register', formData)}
+
+  connexion = ( formData: FormData ) => {axios.post('http://localhost:8080/authorize', formData)}
 
   //put ou patsh pour update
 

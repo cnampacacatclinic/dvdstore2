@@ -1,6 +1,5 @@
 
 import { GenreEnum } from '../utils/enum/GenreEnum';
-import { DvdServiceService } from './../dvd-service.service';
 import { Component, OnInit } from '@angular/core';
 
 export interface Dvd {
