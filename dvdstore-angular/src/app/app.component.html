@@ -23,7 +23,8 @@
             <a class="dropdown-item" (click)="handleGenreClickButton('Thriller')">Thriller</a>
           </div>
         </li>
-        <li class="nav-item dropdown">
+         <!--si la session "token" et la session "role" existent, on affiche les liens pour l'admin -->
+        <li *ngIf="sessionToken && sessionRole" class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/admin-home" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Admin
           </a>
@@ -41,9 +42,10 @@
       <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button (click)="handleButtonSearchClick()" class="violet my-2 my-sm-0" type="submit">...</button>
     </form>
-  
-    <a id="connexion" title="Connexion" href="login">Connexion</a>
-  
+    <!--si la session "token" et la session "role" existent, affiche le lien déconnexion-->
+    <a title="Déconnexion" (click)="deconnexion()" href="/" *ngIf="sessionToken && sessionRole">Déconnexion</a>
+    <!--//sinon affiche le lien connexion-->
+    <a id="connexion" title="Connexion" href="login" *ngIf="!sessionToken && !sessionRole">Connexion</a>
   </nav>
 </header>
 <main>
