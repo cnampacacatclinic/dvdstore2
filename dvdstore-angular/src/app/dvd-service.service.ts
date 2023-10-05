@@ -91,6 +91,11 @@ export class DvdServiceService {
 
   connexion = ( formData: FormData ) => {axios.post('http://localhost:8080/authorize', formData)}
 
+  reponseConnexion = async  (formData : FormData):Promise<any> => {
+    //on recupere le data cad le token etc..
+    return (await axios.post('http://localhost:8080/authorize', formData)).data
+  }
+
   //put ou patsh pour update
 
   /*

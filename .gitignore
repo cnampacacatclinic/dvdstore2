@@ -1,15 +1,15 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/dist
-/tmp
-/out-tsc
-/bazel-out
+/dvdstore-angular/dist
+/dvdstore-angular/tmp
+/dvdstore-angular/out-tsc
+/dvdstore-angular/bazel-out
 
 # Node
-/node_modules
-npm-debug.log
-yarn-error.log
+/dvdstore-angular/node_modules
+/dvdstore-angular/npm-debug.log
+/dvdstore-angular/yarn-error.log
 
 # IDEs and editors
 .idea/
@@ -29,13 +29,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/.angular/cache
+/dvdstore-angular/.angular/cache
 .sass-cache/
-/connect.lock
-/coverage
-/libpeerconnection.log
+/dvdstore-angular/connect.lock
+/dvdstore-angular/coverage
+/dvdstore-angular/libpeerconnection.log
 testem.log
-/typings
+/dvdstore-angular/typings
 
 # System files
 .DS_Store

@@ -13,13 +13,21 @@ export class LoginComponent {
   constructor(private dvdService: DvdServiceService){}
 
   loginObjet={
-    "login": '',
+    "username": '',
      "password": ''
   }
 
-  formConnexion(formData: NgForm) {
+  async  formConnexion(formData: NgForm) {
+    //on affiche dans la console le contenu du formulaire
       console.log(formData.value);
+      //on envoie le contenu à la methode connexion dans le service
       this.dvdService.connexion(formData.value);
+      //on recupére la reponse de la requete avec la methode reponseConnexion dans le service
+      const data = await this.dvdService.reponseConnexion(formData.value);
+      //on affiche dans la console la reponse
+      console.log(data);
+      //on range le token dans une session
+      sessionStorage.setItem("token",data.token)
       alert('Success');
   }
 
