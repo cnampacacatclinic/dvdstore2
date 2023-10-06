@@ -45,6 +45,8 @@ public class SecurityController {
         }
     }
 //Remarque: authentifie le principal (le user) à partir du JWT.
+
+    /**/
 }
 
 

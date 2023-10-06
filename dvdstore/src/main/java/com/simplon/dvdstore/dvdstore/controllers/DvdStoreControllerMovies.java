@@ -15,6 +15,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
+//@RequestMapping("api/dvds")
 @RequestMapping("dvds")
 public class DvdStoreControllerMovies {
     @Autowired
