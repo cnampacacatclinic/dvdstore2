@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { DvdServiceService} from '../dvd-service.service';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import { NgForm } from '@angular/forms';
 
 export class LoginComponent {
 
-  constructor(private dvdService: DvdServiceService){}
+  constructor(private dvdService: DvdServiceService,private router: Router){}
 
   loginObjet={
     "username": '',
@@ -28,10 +30,20 @@ export class LoginComponent {
     console.log(data);
     //on range le token dans une session
     sessionStorage.setItem("token",data.token)
+    //on fait de meme pour le role
     console.log(data.user.roles[0].name);
     const userRole = data.user.roles[0].name;
     sessionStorage.setItem("role",userRole);
-    alert('Success');
+    //alert('Success');
+    //si les session existent
+    if(sessionStorage.getItem("role")!==null && sessionStorage.getItem("token")!==null){
+      //on redirige vers la page admin-home
+      this.router.navigate(['/admin-home']);
+    }else{
+      alert('La connexion a échoué !');
+    }
+
   }
+
 
 }
