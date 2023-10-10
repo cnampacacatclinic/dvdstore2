@@ -29,7 +29,7 @@ export class AppComponent {
 
 
   title = 'dvdstore-angular';
-  searchText = 'a';
+  searchText = '';
 
 
   dvds : Array<Dvd>  = [

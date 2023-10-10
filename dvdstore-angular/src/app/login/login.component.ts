@@ -21,20 +21,20 @@ export class LoginComponent {
 
   async  formConnexion(formData: NgForm) {
     //on affiche dans la console le contenu du formulaire
-    console.log(formData.value);
+    //console.log(formData.value);
     //on envoie le contenu à la methode connexion dans le service
     this.dvdService.connexion(formData.value);
     //on recupére la reponse de la requete avec la methode reponseConnexion dans le service
     const data = await this.dvdService.reponseConnexion(formData.value);
     //on affiche dans la console la reponse
-    console.log(data);
+    //console.log('data : '+data);
     //on range le token dans une session
     sessionStorage.setItem("token",data.token)
     //on fait de meme pour le role
-    console.log(data.user.roles[0].name);
+    //console.log(data.user.roles[0].name);
     const userRole = data.user.roles[0].name;
     sessionStorage.setItem("role",userRole);
-    //alert('Success');
+    
     //si les session existent
     if(sessionStorage.getItem("role")!==null && sessionStorage.getItem("token")!==null){
       //on redirige vers la page admin-home

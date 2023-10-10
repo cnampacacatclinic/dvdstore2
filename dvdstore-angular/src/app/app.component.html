@@ -29,6 +29,7 @@
             Admin
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/admin-home">Admin Home</a>
             <a class="dropdown-item" href="/ajouter-dvd">Ajout Dvd</a>
             <a class="dropdown-item" href="/liste-client">Liste des Clients</a>
             <a class="dropdown-item" href="/liste-vente">Liste des ventes</a>
@@ -39,7 +40,7 @@
       </ul>
     </div>
     <form id="formSearch" class="form-inline my-2 my-lg-0">
-      <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
       <button (click)="handleButtonSearchClick()" class="violet my-2 my-sm-0" type="submit">...</button>
     </form>
     <!--si la session "token" et la session "role" existent, affiche le lien déconnexion-->

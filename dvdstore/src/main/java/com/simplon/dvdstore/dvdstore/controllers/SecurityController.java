@@ -8,9 +8,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 
@@ -46,7 +44,11 @@ public class SecurityController {
     }
 //Remarque: authentifie le principal (le user) à partir du JWT.
 
-    /**/
+    /*update mot de passe*/
+    @PutMapping("/newmdp")
+    public boolean updateMDP(@RequestParam UserDetails userDetails) {
+        return userService.updatePassword(userDetails);
+    }
 }
 
 

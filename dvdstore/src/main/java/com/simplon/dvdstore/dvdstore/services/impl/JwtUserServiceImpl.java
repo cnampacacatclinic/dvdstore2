@@ -92,4 +92,18 @@ public class JwtUserServiceImpl implements JwtUserService {
                         .signWith(SignatureAlgorithm.HS512, signingKey)
                         .compact();
     }
+
+    public boolean updatePassword(UserDetails userDetails) {
+        //je recherche dans la table grâce au donnée de l'utilisateur
+        Owner owner = ownerRepository.findByLogin(String.valueOf(userDetails));
+        //si c'est null, on affiche un message (dans la console pour l'instant)
+        if (owner == null) {
+            throw new UsernameNotFoundException("L'utilisateur n'existe pas");
+        }else {
+            // Met à jour le mot de passe
+            owner.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+            ownerRepository.save(owner);
+            return true;
+        }
+    }
 }

@@ -42,6 +42,11 @@ export interface CustomerGetAllDTO {
   voie:string;
 }
 
+//uniquement pour modifier un mot de passe perdu
+export interface LoginGetAllDTO {
+  username:string;
+  password:string;
+}
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +89,8 @@ export class DvdServiceService {
 
   updateCustomer = ( id:number, formData: FormData ) => {console.log(formData)
     axios.put('http://localhost:8080/customer/'+ id, formData)}
+
+  updateMDP = (formData: FormData) => {axios.put('http://localhost:8080/newmdp', formData)}
 
   addSale = ( formData: FormData ) => {axios.post('http://localhost:8080/sales/', formData)}
 

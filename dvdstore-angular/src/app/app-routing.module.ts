@@ -13,6 +13,7 @@ import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 import { ModifierClientComponent } from './modifier-client/modifier-client.component';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 import { AuthServiceService } from './auth-service.service';
+import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
 
 const routes: Routes = [
   {
@@ -72,6 +73,10 @@ const routes: Routes = [
   {
     path :'creation-compte',
     component: CreationCompteComponent
+  },
+  {
+    path :'mdp-oublie',
+    component: MdpOublieComponent
   }
 
 ];
