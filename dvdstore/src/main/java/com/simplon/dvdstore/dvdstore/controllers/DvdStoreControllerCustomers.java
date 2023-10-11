@@ -17,6 +17,7 @@ import java.util.ArrayList;
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
+//@RequestMapping("api/customer")
 @RequestMapping("customer")
 public class DvdStoreControllerCustomers {
     @Autowired

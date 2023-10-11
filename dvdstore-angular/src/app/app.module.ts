@@ -14,6 +14,8 @@ import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 import { ModifierClientComponent } from './modifier-client/modifier-client.component';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,9 @@ import { ModifierClientComponent } from './modifier-client/modifier-client.compo
     CreerVenteComponent,
     ListeClientComponent,
     ListeVenteComponent,
-    ModifierClientComponent
+    ModifierClientComponent,
+    CreationCompteComponent,
+    MdpOublieComponent
   ],
   imports: [
     BrowserModule,
