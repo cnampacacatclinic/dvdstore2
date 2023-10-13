@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 public class PanierModelServiceID {
 
-    private Integer id_panier;
+    private Integer id_panier=0;
     private Integer idClient;
     private Integer idDvd;
     private float prixUnitaire;
