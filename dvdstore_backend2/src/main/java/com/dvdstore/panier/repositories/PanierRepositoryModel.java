@@ -16,7 +16,7 @@ import java.util.Date;
 public class PanierRepositoryModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id_panier;
+    private Integer id_panier;
 
     @Column(name = "id_client")
     private Integer idClient;
@@ -36,8 +36,4 @@ public class PanierRepositoryModel {
 
     @Column(name = "quantity")
     private Integer quantity;
-
-   /* @Query(nativeQuery = true, value = "CALL total()")
-    void total(float val);*/
-
 }

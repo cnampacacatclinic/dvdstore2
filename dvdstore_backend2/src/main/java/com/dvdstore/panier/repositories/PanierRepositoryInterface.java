@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.ArrayList;
 
-public interface PanierRepositoryInterface extends CrudRepository<PanierRepositoryModel,Long> {
+public interface PanierRepositoryInterface extends CrudRepository<PanierRepositoryModel,Integer> {
     ArrayList<PanierRepositoryModel> findAll();
 }

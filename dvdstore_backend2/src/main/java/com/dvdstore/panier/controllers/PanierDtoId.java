@@ -2,5 +2,5 @@ package com.dvdstore.panier.controllers;
 
 import java.util.Date;
 
-public record PanierDtoId(Long id_panier,Long idClient, Long idDvd, float prixUnitaire, float total, Date date, Long quantity) {
+public record PanierDtoId(Integer id_panier,Integer idClient, Integer idDvd, float prixUnitaire, float total, Date date, Integer quantity) {
 }

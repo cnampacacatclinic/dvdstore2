@@ -9,7 +9,9 @@ import java.util.Date;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class PanierModelService {
+public class PanierModelServiceID {
+
+    private Integer id_panier;
     private Integer idClient;
     private Integer idDvd;
     private float prixUnitaire;
