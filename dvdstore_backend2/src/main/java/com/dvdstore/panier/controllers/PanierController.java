@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.AbstractList;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
@@ -28,7 +29,7 @@ public class PanierController {
     }/**/
 
     @GetMapping("/{id}")
-    public PanierRepositoryModel getDvdById(@PathVariable Integer id){
+    public PanierRepositoryModel getPanierById(@PathVariable Integer id){
         return service.findById(id);
     }
 
@@ -50,4 +51,24 @@ public class PanierController {
         return service.update(id,panierService);
     }
 
+    //Utilise les procdures
+    @PostMapping("/total")
+    public boolean total() {
+        return service.total();
+    }
+
+    @PostMapping("/supppanier")
+    public boolean supppanier() {
+        return service.supppanier();
+    }
+
+    /*@PostMapping("/solde")
+    public boolean solde(float poucent) {
+        return service.solde(poucent);
+    }/**/
+  @PostMapping("/solde")
+  public boolean solde(@RequestBody Map<String, Float> request) {
+      float pourcent = request.get("pourcent");
+      return service.solde(pourcent);
+  }
 }

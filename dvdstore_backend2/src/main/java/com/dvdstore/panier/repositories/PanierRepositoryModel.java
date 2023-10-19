@@ -36,5 +36,4 @@ public class PanierRepositoryModel {
 
     @Column(name = "quantity")
     private Integer quantity;
-
 }
