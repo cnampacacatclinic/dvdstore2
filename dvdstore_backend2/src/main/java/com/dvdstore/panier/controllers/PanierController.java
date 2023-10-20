@@ -17,7 +17,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
-@CrossOrigin(origins = "http://localhost:9001")
+@CrossOrigin(origins = "http://localhost:8080")//mettre par exemple le seul site qui est autorisé à requéter site.exemple.com
 @RequestMapping("panier")
 public class PanierController {
     @Autowired
