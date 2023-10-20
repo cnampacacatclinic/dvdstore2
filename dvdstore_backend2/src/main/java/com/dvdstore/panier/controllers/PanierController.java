@@ -17,6 +17,7 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:9001")
 @RequestMapping("panier")
 public class PanierController {
     @Autowired
@@ -63,8 +64,8 @@ public class PanierController {
     }
 
     /*@PostMapping("/solde")
-    public boolean solde(float poucent) {
-        return service.solde(poucent);
+    public boolean solde(float pourcent) {
+        return service.solde(pourcent);
     }/**/
   @PostMapping("/solde")
   public boolean solde(@RequestBody Map<String, Float> request) {
