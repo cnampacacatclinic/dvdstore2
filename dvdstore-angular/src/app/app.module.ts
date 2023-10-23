@@ -16,6 +16,8 @@ import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 import { ModifierClientComponent } from './modifier-client/modifier-client.component';
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
+import { ListePanierComponent } from './liste-panier/liste-panier.component';
+import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
     ListeVenteComponent,
     ModifierClientComponent,
     CreationCompteComponent,
-    MdpOublieComponent
+    MdpOublieComponent,
+    ListePanierComponent,
+    FormulairePanierComponent
   ],
   imports: [
     BrowserModule,

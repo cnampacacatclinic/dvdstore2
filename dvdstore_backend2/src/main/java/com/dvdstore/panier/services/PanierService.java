@@ -2,13 +2,13 @@ package com.dvdstore.panier.services;
 
 import com.dvdstore.panier.repositories.PanierRepositoryInterface;
 import com.dvdstore.panier.repositories.PanierRepositoryModel;
-import com.dvdstore.panier.controllers.PanierDto;
+import com.dvdstore.panier.controllers.PanierDtoId;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 @Service
 public class PanierService {
@@ -96,12 +96,12 @@ public class PanierService {
     }
 
 
-    public ArrayList<PanierDto> findAll() {
+    public ArrayList<PanierDtoId> findAll() {
         ArrayList<PanierRepositoryModel> panierList = panierRepositoryInterface.findAll();
-        ArrayList<PanierDto> paniersList = new ArrayList<>();
+        ArrayList<PanierDtoId> paniersList = new ArrayList<>();
 
         for (PanierRepositoryModel attribut : panierList) {
-            PanierDto panierDto = new PanierDto(attribut.getIdClient(), attribut.getId_panier(), attribut.getPrixUnitaire(), attribut.getTotal(), attribut.getDate(), attribut.getQuantity());
+            PanierDtoId panierDto = new PanierDtoId(attribut.getId_panier(),attribut.getIdClient(), attribut.getId_panier(), attribut.getPrixUnitaire(), attribut.getTotal(), attribut.getDate(), attribut.getQuantity());
             paniersList.add(panierDto); // Ajoutez le panierDto à la liste
         }
 

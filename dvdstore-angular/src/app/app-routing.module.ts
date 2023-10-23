@@ -14,6 +14,8 @@ import { ModifierClientComponent } from './modifier-client/modifier-client.compo
 import { CreationCompteComponent } from './creation-compte/creation-compte.component';
 import { AuthServiceService } from './auth-service.service';
 import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
+import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier.component';
+import { ListePanierComponent } from './liste-panier/liste-panier.component';
 
 const routes: Routes = [
   {
@@ -77,6 +79,16 @@ const routes: Routes = [
   {
     path :'mdp-oublie',
     component: MdpOublieComponent
+  },
+  {
+    path :'formulaire-panier',
+    canActivate: [AuthServiceService], //la page ne s'affichera que si on à le token
+    component: FormulairePanierComponent
+  },
+  {
+    path :'liste-panier',
+    canActivate: [AuthServiceService], //la page ne s'affichera que si on à le token
+    component: ListePanierComponent
   }
 
 ];

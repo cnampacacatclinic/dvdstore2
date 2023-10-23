@@ -10,12 +10,14 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.AbstractList;
+import java.util.ArrayList;
+import java.util.Map;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @RestController
+@CrossOrigin(origins = "http://localhost:8080")//mettre par exemple le seul site qui est autorisé à requéter site.exemple.com
 @RequestMapping("panier")
 public class PanierController {
     @Autowired
@@ -23,12 +25,12 @@ public class PanierController {
 
 
    @GetMapping("/")
-   public AbstractList<PanierDto> getAllPanier() {
+   public ArrayList<PanierDtoId> getAllPanier() {
         return service.findAll();
     }/**/
 
     @GetMapping("/{id}")
-    public PanierRepositoryModel getDvdById(@PathVariable Integer id){
+    public PanierRepositoryModel getPanierById(@PathVariable Integer id){
         return service.findById(id);
     }
 
@@ -50,4 +52,24 @@ public class PanierController {
         return service.update(id,panierService);
     }
 
+    //Utilise les procdures
+    @PostMapping("/total")
+    public boolean total() {
+        return service.total();
+    }
+
+    @PostMapping("/supppanier")
+    public boolean supppanier() {
+        return service.supppanier();
+    }
+
+    /*@PostMapping("/solde")
+    public boolean solde(float pourcent) {
+        return service.solde(pourcent);
+    }/**/
+  @PostMapping("/solde")
+  public boolean solde(@RequestBody Map<String, Float> request) {
+      float pourcent = request.get("pourcent");
+      return service.solde(pourcent);
+  }
 }

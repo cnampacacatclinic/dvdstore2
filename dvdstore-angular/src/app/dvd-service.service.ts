@@ -42,6 +42,16 @@ export interface CustomerGetAllDTO {
   voie:string;
 }
 
+export interface PanierGetAllDTO {
+  id_panier:number;
+  idClient:number;
+  idDvd:number;
+  prixUnitaire:number;
+  total:number; 
+  date:Date; 
+  quantity:number; 
+}
+
 //uniquement pour modifier un mot de passe perdu
 export interface LoginGetAllDTO {
   username:string;
@@ -66,6 +76,9 @@ export class DvdServiceService {
   getAllSale = async () => {
     return(await axios.get('http://localhost:8080/sales/')).data;
   }
+  getAllPanier = async () => {
+    return(await axios.get('http://localhost:8080/client/controller/')).data;
+  }
 
   getOneDvd =async (id:number) => {
     return axios.get('http://localhost:8080/dvds/'+ id);
@@ -80,6 +93,8 @@ export class DvdServiceService {
   }
 
   addDvd = ( formData: FormData ) => {axios.post('http://localhost:8080/dvds/', formData)}
+
+  addPanier = ( formData: FormData ) => {axios.post('http://localhost:8080/client/controller/', formData)}
 
   updateDvd = ( id:number, formData: FormData ) => {axios.put('http://localhost:8080/dvds/'+ id, formData)}
 
