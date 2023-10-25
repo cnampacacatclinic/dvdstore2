@@ -1,6 +1,7 @@
 package com.simplon.dvdstore.dvdstore.services;
 
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.stereotype.Service;
 
 
 

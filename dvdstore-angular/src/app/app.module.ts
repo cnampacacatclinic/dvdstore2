@@ -18,6 +18,7 @@ import { CreationCompteComponent } from './creation-compte/creation-compte.compo
 import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
 import { ListePanierComponent } from './liste-panier/liste-panier.component';
 import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier.component';
+import { IonicModule } from '@ionic/angular';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
