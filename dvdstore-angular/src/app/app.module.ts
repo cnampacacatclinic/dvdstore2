@@ -18,7 +18,8 @@ import { CreationCompteComponent } from './creation-compte/creation-compte.compo
 import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
 import { ListePanierComponent } from './liste-panier/liste-panier.component';
 import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier.component';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { IonicModule } from '@ionic/angular';
     FormsModule,
     IonicModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

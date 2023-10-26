@@ -17,7 +17,7 @@ public interface ServiceMapper {
     @Mapping(source = "total", target = "total")
     DvdModelServiceSales dtoToServiceSale(DvdStoreDtoSales  dtoSales);
 
-    @Mapping(target = "id", source = "id")
+    /*@Mapping(target = "id", source = "id")
     @Mapping(target = "firstName", source = "firstName")
     @Mapping(target = "lastName", source = "lastName")
     @Mapping(target = "mail", source = "mail")
@@ -27,7 +27,7 @@ public interface ServiceMapper {
     @Mapping(target = "postcode", source = "postcode")
     @Mapping(target = "city", source = "city")
     @Mapping(target = "voie", source = "voie")
-    DvdModelServiceCustomers dtoToServiceCustomer(DvdStoreDtoCustomers dtoCustomer);
+    DvdModelServiceCustomers dtoToServiceCustomer(DvdStoreDtoCustomers dtoCustomer);/**/
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "firstName", source = "firstName")

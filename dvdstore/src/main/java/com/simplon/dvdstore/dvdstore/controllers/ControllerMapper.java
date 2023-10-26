@@ -1,21 +1,15 @@
 package com.simplon.dvdstore.dvdstore.controllers;
 
-import com.simplon.dvdstore.dvdstore.services.DvdModelServiceCustomers;
-import com.simplon.dvdstore.dvdstore.services.DvdModelServiceMovies;
-import com.simplon.dvdstore.dvdstore.services.DvdModelServiceSales;
+import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelCustomers;
+import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
+
 @Mapper
 public interface ControllerMapper {
     ControllerMapper INSTANCE = Mappers.getMapper( ControllerMapper.class );
 
-    @Mapping(source = "FKUsers", target = "FKUsers")
-    @Mapping(source = "FKMovies", target = "FKMovies")
-    @Mapping(source = "quantityOfSales", target = "quantityOfSales")
-    @Mapping(source = "date", target = "date")
-    @Mapping(source = "total", target = "total")
-    DvdStoreDtoSales serviceToDtoSale(DvdModelServiceSales serviceSale);
 
     @Mapping(target = "id", source = "id")
     @Mapping(target = "firstName", source = "firstName")
@@ -27,7 +21,8 @@ public interface ControllerMapper {
     @Mapping(target = "postcode", source = "postcode")
     @Mapping(target = "city", source = "city")
     @Mapping(target = "voie", source = "voie")
-    DvdStoreDtoIdCustomers serviceToDtoCustomer(DvdModelServiceCustomers serviceCustomer);
+    DvdStoreDtoCustomers dtoToRepositoryCustomer(DvdStoreRepositoryModelCustomers repositoryCustomer);
+
 
     @Mapping(target = "genre", source = "genre")
     @Mapping(target = "name", source = "name")
@@ -35,6 +30,6 @@ public interface ControllerMapper {
     @Mapping(target = "price", source = "price")
     @Mapping(target = "imgPath", source = "imgPath")
     @Mapping(target = "synopsis", source = "synopsis")
-    DvdStoreDtoMovies serviceToDtoMovie(DvdModelServiceMovies serviceMovie);
+    DvdStoreDtoIdMovies dtoToRepositoryMovie(DvdStoreRepositoryModelMovies repositoryMovie);
 
 }

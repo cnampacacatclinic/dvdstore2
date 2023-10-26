@@ -1,6 +1,8 @@
 package com.simplon.dvdstore.dvdstore.controllers;
 
 import com.simplon.dvdstore.dvdstore.services.DvdModelServiceMovies;
+import com.simplon.dvdstore.dvdstore.services.DvdModelServiceSales;
+import com.simplon.dvdstore.dvdstore.services.ServiceMapper;
 import org.springframework.web.bind.annotation.*;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import com.simplon.dvdstore.dvdstore.services.DvdStoreServiceMovies;
@@ -50,7 +52,7 @@ public class DvdStoreControllerMovies {
     //Update
     @PutMapping("/{id}")
     public boolean updateDvd(@PathVariable Long id, @RequestBody DvdStoreDtoMovies dvd){
-        DvdModelServiceMovies dvdModelService = new DvdModelServiceMovies(dvd.genre(),dvd.name(),dvd.quantity(),dvd.price(),dvd.imgPath(),dvd.synopsis());
+        DvdModelServiceMovies dvdModelService = ServiceMapper.INSTANCE.dtoToServiceMovie(dvd);
         return dvdStoreService.updateById(id,dvdModelService);
     }
 }

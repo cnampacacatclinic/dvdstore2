@@ -38,13 +38,6 @@ public class DvdStoreControllerCustomers {
     }/**/
 
 
-    //Update
-   /*@PutMapping("/{id}")
-    public boolean updateCustomer(@PathVariable Long id, @RequestBody DvdStoreDtoIdCustomers customer){
-        DvdModelServiceCustomers dvdModelService = new DvdModelServiceCustomers(id, customer.firstName(), customer.lastName(), customer.mail(), customer.phoneNumber(), customer.streetNumber(), customer.streetName(), customer.postcode(), customer.city(), customer.voie());
-        return dvdStoreService.updateById(id,dvdModelService);
-    }/**/
-
     //Update costumer
    @PutMapping("/{id}")
     public boolean updateCustomer(@PathVariable Long id, @RequestBody DvdStoreDtoIdCustomers customer) {

@@ -58,7 +58,7 @@ public class PanierService {
                     panierModelService.getDate(),
                     panierModelService.getQuantity()
             );
-
+            total();
             // Enregistrez l'objet dans la base de données en utilisant la méthode save()
             panierRepositoryInterface.save(panierRepositoryModel);
             return true;

@@ -1,5 +1,6 @@
 package com.simplon.dvdstore.dvdstore.services;
 
+import com.simplon.dvdstore.dvdstore.controllers.ControllerMapper;
 import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoIdMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterfaceMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
@@ -18,7 +19,10 @@ public class DvdStoreServiceMovies {
         ArrayList<DvdStoreDtoIdMovies> dvdDtoList = new ArrayList<>();
 
         for(DvdStoreRepositoryModelMovies dvd : dvdList){
-            DvdStoreDtoIdMovies dvdDto = new DvdStoreDtoIdMovies(dvd.getId(),dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice(),dvd.getImgPath(),dvd.getSynopsis());
+
+            DvdStoreDtoIdMovies dvdDto = ControllerMapper.INSTANCE.dtoToRepositoryMovie(dvd);
+
+            //DvdStoreDtoIdMovies dvdDto = new DvdStoreDtoIdMovies(dvd.getId(),dvd.getName(), dvd.getGenre(), dvd.getQuantity(),dvd.getPrice(),dvd.getImgPath(),dvd.getSynopsis());
             dvdDtoList.add(dvdDto);
         }
 
@@ -54,9 +58,6 @@ public class DvdStoreServiceMovies {
                     return false;
                 }
             }
-            /*dvd.setName(dvd2.getName());
-            dvd.setGenre(dvd2.getGenre());
-            return dvdStoreRepository.save(dvd);*/
         }else {
             return false;
         }
