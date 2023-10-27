@@ -1,10 +1,26 @@
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
 @font-face {
     font-family: 'Actor';
     src: url('/assets/font/Actor-Regular.ttf') format('truetype');
 }
 @font-face {
     font-family: 'Taviraj';
-    src: url('/assets/font/static/Taviraj-Regular.ttf') format('truetype');
+    src: url('/assets/font/Taviraj-Regular.ttf') format('truetype');
 }
 
 body{
@@ -17,9 +33,28 @@ body{
     font-size: 1.5em;
     text-align: center;
     position: relative;
-    top:100px;
 }
+
+.ionRouter { 
+    inset: 0px;
+     position: inherit !important;
+     contain:  none !important;
+     z-index: 0; }
+    
+
+main{
+    position: relative;
+    top:75px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0;
+}
+
 h1{
+    position: relative;
     font-family:'Actor';
     font-size: 2em;
 }
@@ -51,11 +86,14 @@ footer{
     display: flex;
     flex-direction: row;
     width: 100%;
+    height: auto;
     background-color: #fff;
     display: flex;
     flex-direction: row;
     margin: 0;
     padding: 0;
+    position: sticky !important;
+    bottom: 0 !important;
 }
 footer p{
     margin-left: 30px;

@@ -14,6 +14,12 @@ import { CreerVenteComponent } from './creer-vente/creer-vente.component';
 import { ListeClientComponent } from './liste-client/liste-client.component';
 import { ListeVenteComponent } from './liste-vente/liste-vente.component';
 import { ModifierClientComponent } from './modifier-client/modifier-client.component';
+import { CreationCompteComponent } from './creation-compte/creation-compte.component';
+import { MdpOublieComponent } from './mdp-oublie/mdp-oublie.component';
+import { ListePanierComponent } from './liste-panier/liste-panier.component';
+import { FormulairePanierComponent } from './formulaire-panier/formulaire-panier.component';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { RouteReuseStrategy } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -28,14 +34,19 @@ import { ModifierClientComponent } from './modifier-client/modifier-client.compo
     CreerVenteComponent,
     ListeClientComponent,
     ListeVenteComponent,
-    ModifierClientComponent
+    ModifierClientComponent,
+    CreationCompteComponent,
+    MdpOublieComponent,
+    ListePanierComponent,
+    FormulairePanierComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    IonicModule.forRoot()
   ],
-  providers: [],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

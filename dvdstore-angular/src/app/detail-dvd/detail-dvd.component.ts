@@ -32,8 +32,6 @@ export class DetailDvdComponent {
   }
 
 
- // dvdToShow: Dvd | null = null;
-
   constructor(private dvdService: DvdServiceService,private route : ActivatedRoute) {}
 
   async ngOnInit() {
@@ -59,10 +57,6 @@ export class DetailDvdComponent {
     }
     console.log(this.dvd);
   });
-
-    /*
-     this.dvdService.getOneDvd(id);
-    /** */
   }
 
 }

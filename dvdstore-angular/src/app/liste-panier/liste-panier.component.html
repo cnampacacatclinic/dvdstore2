@@ -1,0 +1,27 @@
+<section>
+    <h1>Liste des paniers</h1>
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Id Panier</th>
+                <th scope="col">Id client</th>
+                <th scope="col">Id dvd</th>
+                <th scope="col">Prix unitaire</th>
+                <th scope="col">Total</th>
+                <th scope="col">Date</th>
+                <th scope="col">Quantity</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let panier of panierToShow">
+                <td>{{ panier.id_panier }}</td>
+                <td>{{ panier.idClient }}</td>
+                <td>{{ panier.idDvd }}</td>
+                <td>{{ panier.prixUnitaire }}</td>
+                <td>{{ panier.total }}</td>
+                <td>{{ panier.date }}</td>
+                <td>{{ panier.quantity }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </section>

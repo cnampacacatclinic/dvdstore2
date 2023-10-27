@@ -1,0 +1,16 @@
+<section>
+  <h1>Mot de passe oublié</h1>
+  <form #formData="ngForm" (submit)="formCreationcompte(formData)">
+    <fieldset>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Identifiant</label>
+        <input [(ngModel)]="loginObjet.login" name="login" type="text" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Nouveau mot de passe</label>
+        <input [(ngModel)]="loginObjet.password" name="password" type="password" id="exampleInputPassword1" required>
+      </div>
+      <button type="submit">Envoyer</button>
+    </fieldset>
+  </form>
+</section>

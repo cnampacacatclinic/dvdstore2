@@ -6,18 +6,30 @@ export interface Dvd {
   genre: GenreEnum,
   imgPath: string
 }
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+  //le session est dans sessionStorage et non dans localStorage !!!
+  sessionToken : string = sessionStorage.getItem("token") as string; //on a caster  en string : as string
+  sessionRole : string = sessionStorage.getItem("role") as string; //on a caster  en string : as string
 
-
+  //fonction deconnexion
+  deconnexion(){
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("role");
+    // Supprimer toutes les données de sessionStorage
+    //sessionStorage.clear();
+  }
 
 
   title = 'dvdstore-angular';
-  searchText = 'a';
+  searchText = '';
 
 
   dvds : Array<Dvd>  = [

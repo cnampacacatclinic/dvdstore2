@@ -1,5 +1,6 @@
 package com.simplon.dvdstore.dvdstore.services;
 
+import com.simplon.dvdstore.dvdstore.controllers.ControllerMapper;
 import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoCustomers;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryInterfaceCustomers;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelCustomers;
@@ -26,8 +27,11 @@ public class DvdStoreServiceCustomers {
         /*for(DvdStoreRepositoryModelCustomers customer : customerList){
             DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(customer.getFirstName(), customer.getLastName(), customer.getMail(),customer.getPhoneNumber(),customer.getStreetNumber(),customer.getStreetName(), customer.getPostcode(),customer.getCity(),customer.getVoie());
         }/**/
+
         for (DvdStoreRepositoryModelCustomers customer : customerList) {
-            DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(
+
+            DvdStoreDtoCustomers customersDto = ControllerMapper.INSTANCE.dtoToRepositoryCustomer(customer);
+         /*  DvdStoreDtoCustomers customersDto = new DvdStoreDtoCustomers(
                     customer.getId(),
                     customer.getFirstName(),
                     customer.getLastName(),
@@ -38,7 +42,7 @@ public class DvdStoreServiceCustomers {
                     customer.getPostcode(),
                     customer.getCity(),
                     customer.getVoie()
-            );
+            );/**/
             customersList.add(customersDto); // Ajoutez le client à la liste
         }
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { DvdServiceService, DvdGetAllDTO } from '../dvd-service.service';
-
+import { BearerTokenInterceptorService } from '../bearer-token-interceptor.service';
 
 export interface Dvd {
   id: number;
@@ -20,8 +20,12 @@ export interface Dvd {
 export class AdminHomeComponent implements OnInit {
   dvdToShow: Dvd[] = [];
 
-  constructor(private dvdService: DvdServiceService) {}
+  constructor(private dvdService: DvdServiceService,private httpService: BearerTokenInterceptorService) {}
   id: string | null='0';
+
+  //le session est dans sessionStorage et non dans localStorage !!!
+  sessionToken : string = sessionStorage.getItem("token") as string; //on a caster  en string : as string
+  sessionRole : string = sessionStorage.getItem("role") as string; //on a caster  en string : as string
 
   async ngOnInit() {
     const dvdGetAllDTOs = await this.dvdService.getAllDvd();
@@ -39,5 +43,20 @@ export class AdminHomeComponent implements OnInit {
       };
       return dvd;
     });
+
+    /**const secureResourceUrl = 'https://votre-api.com/resource';
+    const bearerToken = 'votre-jeton-bearer'; // Remplacez par le véritable jeton Bearer
+
+    this.httpService.makeSecureRequest(secureResourceUrl, bearerToken)
+      .then((data) => {
+        // Traitez les données ici
+        console.log(data);
+      })
+      .catch((error) => {
+        // Gérez les erreurs ici
+        console.error(error);
+      });
+  }/**/
+  
   }
 }
