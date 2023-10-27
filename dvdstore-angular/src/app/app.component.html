@@ -1,4 +1,4 @@
-<ion-app>
+<ion-app class="overflow">
     <header  style="position: fixed;top:0;">
       <nav id="navbarre" class="navbar navbar-expand-lg navbar-light">
         <a class="navbar-brand" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
@@ -53,10 +53,10 @@
       </nav>
   </header>
   <main>
-    <ion-content [fullscreen]="true" class="ion-padding">
-      <!--<router-outlet></router-outlet>-->
+    <ion-content *ngIf="isAndroid||isIphone" [fullscreen]="true" [scrollEvents]="true" class="ion-padding overflow">
       <ion-router-outlet class="ionRouter"></ion-router-outlet>
     </ion-content>
+    <router-outlet *ngIf="!isAndroid||!isIphone"></router-outlet>
   </main>
   <footer>
       <p>Copyright &copy;</p>

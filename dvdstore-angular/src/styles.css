@@ -37,20 +37,25 @@ body{
 
 .ionRouter { 
     inset: 0px;
-     position: inherit !important;
+     position: relative !important;
      contain:  none !important;
      z-index: 0; }
+
+/**{
+    overflow: auto !important;
+}/**/
     
 
 main{
     position: relative;
-    top:75px;
+    top:100px;
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: auto;
     margin: 0;
     padding: 0;
+    overflow: scroll !important;
+    background-color: #eee;
 }
 
 h1{
@@ -94,6 +99,7 @@ footer{
     padding: 0;
     position: sticky !important;
     bottom: 0 !important;
+    margin-top: 100px;
 }
 footer p{
     margin-left: 30px;
@@ -122,6 +128,8 @@ button {
     font-family:'Actor';
     text-transform: uppercase;
     align-self: self-end;
+    padding:5px !important;
+
 }
 button:hover{
     transition-duration: 2s;
@@ -132,7 +140,7 @@ button:hover{
     color: #fff !important;
     font-family:'Actor';
     text-transform: uppercase;
-    padding:5px;
+    padding:5px !important;
     box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
 }
 .fauxBouton:hover{
@@ -188,7 +196,7 @@ textarea {
 select{
     width: 300px;
     margin: 10px;
-    border: none;/*j'ai du ajouter cela parce qu'autrment
+    border: none;/*j'ai du ajouter cela parce qu'autrement
     les borders de Boostrap ne partent pas*/
     border:1px solid #333;
 }
@@ -203,9 +211,11 @@ section {
     display: flex;
     flex-direction: column;
     width: 100%;
+    height: 100vh;
     margin: 0;
     margin-bottom: 30px;
     padding: 0;
+    padding-top: 50px;
     background-color: #eee;
     align-items: center;
 }
