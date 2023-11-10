@@ -15,11 +15,11 @@
     </div>
     <div class="form-group">
         <label for="exampleFormControlInput1">Quantite</label>
-        <input [(ngModel)]="saleObjet.quantityOfSales" name="quantityOfSales" type="number">
+        <input [(ngModel)]="saleObjet.quantityOfSales" name="quantityOfSales" type="number" min="0">
     </div>
     <div class="form-group">
       <label for="exampleFormControlInput1">Date</label>
-      <input [(ngModel)]="saleObjet.date" name="date" type="text">
+      <input [(ngModel)]="saleObjet.date" name="date" type="datetime-local">
     </div>
     
     <input [(ngModel)]="saleObjet.total" name="total" type="hidden">

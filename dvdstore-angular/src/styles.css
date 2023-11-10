@@ -58,6 +58,8 @@ main{
     background-color: #eee;
 }
 
+#srcoll {overflow: scroll !important;}
+
 h1{
     position: relative;
     font-family:'Actor';

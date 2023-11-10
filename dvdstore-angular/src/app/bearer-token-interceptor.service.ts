@@ -7,13 +7,13 @@ import axios from 'axios';
 export class BearerTokenInterceptorService {
 
   //le session est dans sessionStorage et non dans localStorage !!!
-  sessionToken : string = sessionStorage.getItem("token") as string; //on a caster  en string : as string
-  sessionRole : string = sessionStorage.getItem("role") as string; //on a caster  en string : as string
+  sessionToken : string = sessionStorage.getItem("token") as string; //on a casté  en string : as string
+  sessionRole : string = sessionStorage.getItem("role") as string; //on a casté  en string : as string
 
   makeSecureRequest(url: string, token: string) {
     const headers = {
       'Authorization': `Bearer ${token}`,
-      'Content-Type': 'application/json', // Vous pouvez ajuster les en-têtes en fonction de vos besoins
+      'Content-Type': 'application/json',
     };
 
     return axios.get(url, { headers })
