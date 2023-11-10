@@ -15,7 +15,6 @@ public class DvdStoreServiceMovies {
     private DvdStoreRepositoryInterfaceMovies dvdStoreRepository;
 
 
-
     public ArrayList<DvdStoreDtoIdMovies> findAll() {
         ArrayList<DvdStoreRepositoryModelMovies> dvdList = dvdStoreRepository.findAll();
         ArrayList<DvdStoreDtoIdMovies> dvdDtoList = new ArrayList<>();

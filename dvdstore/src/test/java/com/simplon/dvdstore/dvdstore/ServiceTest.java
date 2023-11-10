@@ -1,5 +1,6 @@
 package com.simplon.dvdstore.dvdstore;
 
+import com.simplon.dvdstore.dvdstore.controllers.DvdStoreDtoIdMovies;
 import com.simplon.dvdstore.dvdstore.repositories.DvdStoreRepositoryModelMovies;
 import com.simplon.dvdstore.dvdstore.services.DvdStoreServiceMovies;
 import org.junit.Test;
@@ -9,7 +10,12 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.List;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 // Test que pour les tests unitaires donc ne prend pas de risque
 // @RunWith : ce qui permet de lancer le processus de test dans mon serveur
@@ -27,6 +33,11 @@ public class ServiceTest {
     // @Autowired : C'est ce qu'on souhaite tester, il existe une alternative avec Mockito qui peut simuler un objet ou une classe qui seront supprimés après le test
     @Autowired
     private DvdStoreServiceMovies dvdStoreService;
+
+    /*private DvdStoreRepositoryModelMovies createDvdStoreR(Long id) {
+        return id;
+    }/**/
+
     // private dvd service etc... on crée dvdservice avec lequel on fait le test
     private DvdStoreRepositoryModelMovies createDvdStoreRepositoryModelMovies(String genre, String name, Long quantity, float price, String imgPath, String synopsis) {
         DvdStoreRepositoryModelMovies dvd = new DvdStoreRepositoryModelMovies();
@@ -38,6 +49,7 @@ public class ServiceTest {
         dvd.setSynopsis(synopsis);
         return dvd;
     }
+
     // @Test : le premier test unitaire
     @Test
     public void save_dvd_returns_true() throws Exception {// Nom de la fonction est fait d'après la valeur de retour attendue en fonction des paramètres de la fonction
@@ -51,5 +63,26 @@ public class ServiceTest {
         DvdStoreRepositoryModelMovies dvd = createDvdStoreRepositoryModelMovies(null, null, null, 50.2F, null, null);
         assertNotNull(dvdStoreService.save(dvd));
     }
+
+   /*@Test
+    public void find_dvd_by_id_returns_valid_dvd() {
+        DvdStoreRepositoryModelMovies dvdId = createDvdStoreR(2L);
+        assertEquals(dvdStoreService.findById(dvdId.getId()), dvdId );
+
+    }/**/
+
+    @Test
+    public void find_all_returns_list_of_dtos() {
+        List<DvdStoreDtoIdMovies> result = dvdStoreService.findAll();
+        // on regarde si la liste n'est pas null et si elle n'est pas vide.
+        assertNotNull(result);
+        assertFalse(result.isEmpty());
+    }
+
+    @Test
+    public void delete_dvd_returns_false_if_property_id_is_null() throws Exception {
+       assertTrue(dvdStoreService.delete(0L));
+    }
+
 
 }
