@@ -1,0 +1,19 @@
+
+<section>
+    <h1>Connexion</h1>
+    <form #formData="ngForm" (submit)="formConnexion(formData)" id="formConnexion">
+        <fieldset>
+        <div class="form-group">
+          <label for="exampleInputEmail1">Identifiant</label>
+          <input [(ngModel)]="loginObjet.username" name="username" type="texte" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Mot de passe</label>
+          <input [(ngModel)]="loginObjet.password" name="password" type="password" id="exampleInputPassword1" required>
+        </div>
+        <button type="submit">Connexion</button>
+        <a href="/creation-compte">Créer un compte</a>
+        <a href="/mdp-oublie">Mot de passe oublié</a>
+    </fieldset>
+    </form>
+</section>

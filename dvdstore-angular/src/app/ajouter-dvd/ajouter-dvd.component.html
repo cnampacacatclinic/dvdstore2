@@ -1,0 +1,39 @@
+<section>
+    <h1>Ajouter un DVD</h1>
+    <form #formData="ngForm" (submit)="form2(formData)">
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Titre</label>
+        <input [(ngModel)]="dvdObj.name" name="name" type="text">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Genre</label>
+      <select [(ngModel)]="dvdObj.genre" name="genre" id="selectGenre">
+        <option>Choisir un genre</option>
+        <option value="Action">Action</option>
+        <option value="Aventure">Aventure</option>
+        <option value="Comedie">Comedie</option>
+        <option value="Drame">Drame</option>
+        <option value="Science-fiction">Science-fiction</option>
+        <option value="Thriller">Thriller</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Quantite</label>
+        <input [(ngModel)]="dvdObj.quantity" name="quantity" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput1">Prix</label>
+        <input [(ngModel)]="dvdObj.price" name="price" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlTextarea1">Synopsis</label>
+        <textarea [(ngModel)]="dvdObj.synopsis" name="synopsis" id="exampleFormControlTextarea1" rows="3"></textarea>
+  </div>
+    <div class="form-group">
+        <label for="exampleFormControlFile1">Photo</label>
+        <input [(ngModel)]="dvdObj.imgPath" name="imgPath" type="text">
+        <!--<input name="photo" type="file" class="form-control-file" id="exampleFormControlFile1">-->
+    </div>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>

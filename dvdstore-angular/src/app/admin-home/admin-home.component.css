@@ -1,0 +1,25 @@
+#listDvd{
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: center;
+}
+#listDvd .vignetteDvd{
+    display:flex;
+    flex-direction: row;
+    width: 40%;
+    margin: 8px;
+    border:1px solid #222;
+}
+#listDvd img{
+    height: 250px;
+    width: auto;
+}
+#listDvd figcaption{
+    display:flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 60%;
+}

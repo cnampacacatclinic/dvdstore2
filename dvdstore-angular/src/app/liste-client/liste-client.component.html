@@ -1,0 +1,27 @@
+<section>
+  <h1>Liste des clients</h1>
+    <table class="table table-hover">
+        <thead>
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Prénom</th>
+            <th scope="col">Nom</th>
+            <th scope="col">E-mail</th>
+            <th scope="col">Téléphone</th>
+            <th scope="col">Adresse</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let customer of customerToShow">
+            <td scope="row">{{ customer.id }}</td>
+            <td>{{ customer.firstName }}</td>
+            <td>{{ customer.lastName }}</td>
+            <td>{{ customer.mail }}</td>
+            <td>{{ customer.phoneNumber }}</td>
+            <td>{{ customer.streetNumber}} {{ customer.streetName}} {{ customer.postcode}} {{ customer.city}} {{ customer.voie}}</td>
+            <td><a class="fauxBouton" [routerLink]="'/modifier-client/' + customer.id">Modifier</a></td>
+          </tr>
+        </tbody>
+      </table>
+</section>

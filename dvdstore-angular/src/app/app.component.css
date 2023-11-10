@@ -1,0 +1,70 @@
+#navbarre{
+    width: 100%;
+    font-family:'Actor';
+    font-size: 1em;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+#navbarre img{
+    width: 3em;
+}
+#navbarre a {
+    color: #540B82 !important;
+    line-height: 1.7;
+    padding:0;
+    padding-right:30px;
+}
+#navbarre a:hover {
+    transition-duration: 2s;
+    color: #111 !important;
+}
+
+.violet {
+    background-color: #540B82 !important;
+}
+#navbarDropdown{
+    color: #540B82 !important;
+    line-height: 1.7;
+}
+#connexion{
+    padding-right:30px;
+}
+nav select{
+    height:40px;
+    border: none;
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+    color: #540B82;
+    font-family:'Actor';
+    font-size:1em;
+    text-transform: uppercase;
+    width: 100px;
+}
+#formSearch{
+    padding: 0;
+    padding-right: 30px;
+}
+#formSearch input{
+    height:40px;
+    width: 180px;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #540B82;
+    border: 1px solid #333;
+    border-radius: none;
+    text-transform: uppercase;
+    font-size:1em;
+    line-height: 1.7;
+}
+#formSearch button{
+    height:40px;
+    margin: 0 !important;
+    padding: 0 !important;
+    color: #540B82 !important;
+    border: 1.2px solid #540B82 !important;
+    text-transform: uppercase !important;
+    font-size:1em;
+    line-height: 1.7;
+    box-shadow:none;
+}

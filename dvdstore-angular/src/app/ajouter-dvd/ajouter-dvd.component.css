@@ -1,0 +1,25 @@
+#formConnexion{
+    width: 60%;
+}
+#formConnexion fieldset{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 50px;
+    margin-bottom: 50px;
+}
+#formConnexion input{
+    width: 100%;
+    border: 1px solid #222;
+}
+#formConnexion button{
+    width: auto;
+    align-self: self-end;
+}
+#formConnexion div{
+    text-align: left;
+    text-transform: uppercase;
+    font-family: 'Actor';
+    font-size: 0.9em;
+}

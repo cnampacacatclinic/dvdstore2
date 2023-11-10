@@ -1,0 +1,242 @@
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+@font-face {
+    font-family: 'Actor';
+    src: url('/assets/font/Actor-Regular.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'Taviraj';
+    src: url('/assets/font/Taviraj-Regular.ttf') format('truetype');
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    background-color: #eee;
+    font-family:'Taviraj';
+    font-size: 1.5em;
+    text-align: center;
+    position: relative;
+}
+
+.ionRouter { 
+    inset: 0px;
+     position: relative !important;
+     contain:  none !important;
+     z-index: 0; }
+
+/**{
+    overflow: auto !important;
+}/**/
+    
+
+main{
+    position: relative;
+    top:100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: scroll !important;
+    background-color: #eee;
+}
+
+h1{
+    position: relative;
+    font-family:'Actor';
+    font-size: 2em;
+}
+h2{
+    font-size: 1.5em;
+    font-style: italic;
+    color:#222;
+}
+header{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    top:0;
+    position: fixed;
+    z-index: 99;
+    margin: 0;
+    padding: 0;
+    font-family:'Actor';
+    font-size: 1em;
+    text-transform: uppercase;
+    background-color: #fff;
+}
+header img{
+    width: 3em;
+    margin: 5px;
+    margin-left: 25px;
+}
+footer{
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: auto;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding: 0;
+    position: sticky !important;
+    bottom: 0 !important;
+    margin-top: 100px;
+}
+footer p{
+    margin-left: 30px;
+}
+
+a:link {
+    color: #540B82;
+    text-decoration: none;   
+}
+
+a:hover {
+    transition-duration: 2s;
+    color: #333;
+    font-style: italic;
+}
+label{
+    font-family:'Actor';
+    text-transform: uppercase;
+    text-align: left;
+    font-size: 0.9em;
+}
+button {
+    border: none;
+    background-color: #540B82;
+    color: #fff;
+    font-family:'Actor';
+    text-transform: uppercase;
+    align-self: self-end;
+    padding:5px !important;
+
+}
+button:hover{
+    transition-duration: 2s;
+    background-color: #111;
+}
+.fauxBouton{
+    background-color: #540B82;
+    color: #fff !important;
+    font-family:'Actor';
+    text-transform: uppercase;
+    padding:5px !important;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+}
+.fauxBouton:hover{
+    transition-duration: 2s;
+    background-color: #111;
+    font-style: normal;
+}
+.danger{
+    background-color: #F11818;
+    color: #fff !important;
+    font-family:'Actor';
+    text-transform: uppercase;
+    width: 140px;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+}
+
+.danger:hover{
+    transition-duration: 2s;
+    background-color: #9b4d4d;
+    font-style: normal;
+}
+form{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    text-align: left;
+}
+form fieldset{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #222;
+    padding: 50px;
+    margin-bottom: 50px;
+}
+form input{
+    width: 100%;
+    border: 1px solid #222;
+}
+form button{
+    width: auto;
+    align-self: self-end;
+    box-shadow: 6px 6px 25px rgba(0, 0, 0, 0.5);
+}
+textarea {
+    margin: 0;
+    margin-bottom: 30px;
+    min-height: 150px;
+    max-height: 350px;
+    border:1px solid #222;
+    width: 100%;
+}
+select{
+    width: 300px;
+    margin: 10px;
+    border: none;/*j'ai du ajouter cela parce qu'autrement
+    les borders de Boostrap ne partent pas*/
+    border:1px solid #333;
+}
+input[type=file]{
+    background-color: #fff;
+    border-radius: none !important;
+}
+input[type=file] button{
+    margin: 0;
+}
+section {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    margin: 0;
+    margin-bottom: 30px;
+    padding: 0;
+    padding-top: 50px;
+    background-color: #eee;
+    align-items: center;
+}
+section img{
+    width: 350px;
+}
+td{
+    border:1px solid #333;
+}
+.table{
+    border:1px solid #333;
+    width: 80%;
+}
+.table thead th{
+    border:1px solid #333;
+}
+@media (max-width: 800px) {
+    form{
+        width: 95%;
+    }
+    .table{
+       width: 95%;
+    }
+}

@@ -1,0 +1,13 @@
+<section id="sectionDetailDvd">
+    <h1>{{ dvd.name }}</h1>
+    <figure id="detailDvd" class="vignetteDvd">
+        <img [src]="'assets/img/' + dvd.imgPath" alt="dvd">
+        <figcaption>
+            <p>Genre : {{ dvd.genre }}</p>
+            <a id="modifier" class="fauxBouton" [routerLink]="'/modifier-dvd/' + dvd.id">Modifier</a>
+            <p>Prix : {{ dvd.price }}</p>
+            <p>Nombre en stock : {{ dvd.quantity }}</p>
+            <p>Résumé :<br>{{ dvd.synopsis }}</p>
+        </figcaption>
+    </figure>
+</section>

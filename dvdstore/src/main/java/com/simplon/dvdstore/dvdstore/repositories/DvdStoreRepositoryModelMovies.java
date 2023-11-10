@@ -1,0 +1,33 @@
+package com.simplon.dvdstore.dvdstore.repositories;
+
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+
+@Entity
+@Table(name = "movies")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
+public class DvdStoreRepositoryModelMovies {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@OneToMany
+    private Long id;
+    @Column(name="genre")
+    private String genre;
+    @Column(name="name")
+    private String name;
+    @Column(name="quantity")
+    private Long quantity;
+    @Column (name="price")
+    private float price;
+    @Column(name="img_path")
+    private String imgPath;
+    @Column (name="synopsis")
+    private String synopsis;
+
+}

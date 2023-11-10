@@ -1,0 +1,53 @@
+<section>
+    <h1>Gestion du client</h1>
+    <form #formData="ngForm" (submit)="formCreateCustomer(formData)" >
+    <div class="form-group">
+    <label for="exampleFormControlInput1">Prenom</label>
+        <input [(ngModel)]="customerObjet.firstName" name="firstName" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput2">Nom</label>
+        <input [(ngModel)]="customerObjet.lastName" name="lastName" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput3">Mail</label>
+        <input [(ngModel)]="customerObjet.mail" name="mail" type="email">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput4">Telephone</label>
+        <input [(ngModel)]="customerObjet.phoneNumber" name="phoneNumber" type="text">
+    </div>
+    <div class="form-group">
+      <label for="exampleFormControlSelect1">Type de voie</label>
+      <select [(ngModel)]="customerObjet.voie" name="voie" id="exampleFormControlSelect1">
+        <option value="rue">rue</option>
+        <option value="avenue">avenue</option>
+        <option value="allee">allée</option>
+        <option value="cours">cours</option>
+        <option value="place">place</option>
+        <option value="escalier">escalier</option>
+        <option value="boulevard">boulevard</option>
+        <option value="impasse">impasse</option>
+        <option value="chemin">chemin</option>
+        <option value="faubourg">faubourg</option>
+      </select>
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput5">Numéro de la voie</label>
+        <input [(ngModel)]="customerObjet.streetNumber" name="streetNumber" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput6">Nom de la voie</label>
+        <input [(ngModel)]="customerObjet.streetName" name="streetName" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput7">Code postal</label>
+        <input [(ngModel)]="customerObjet.postcode" name="postcode" type="text">
+    </div>
+    <div class="form-group">
+        <label for="exampleFormControlInput8">Ville</label>
+        <input [(ngModel)]="customerObjet.city" name="city" type="text">
+    </div>
+    <button type="submit">Envoyer</button>
+  </form>
+</section>
