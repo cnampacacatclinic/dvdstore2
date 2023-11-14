@@ -50,20 +50,34 @@ describe('DetailDvdComponent', () => {
   it('should return "Hello World!"', () => {
     expect(component.maFonction()).toBe('Hello World!');
   });
-
+/*
  it('devrait return un dvd...', waitForAsync(() => {
-    const dvd = {
-          id: 9,
-          genre: 'Action',
-          name: 'retest',
-          price: 2.4,
-          quantity: 6,
-          imgPath :'4dvd.jpg',
-          synopsis: 'blabla'
-        }
-      //let idDvd2=1;
-      component.ngOnInit();
-    expect(component.dvd).toEqual(dvd);
+  const dvd = {
+    id: 9,
+    genre: 'Action',
+    name: 'retest',
+    price: 2.4,
+    quantity: 6,
+    imgPath :'4dvd.jpg',
+    synopsis: 'blabla'
+  }
+//let idDvd2=1;
+component.ngOnInit();
+expect(component.dvd).toEqual(dvd);
   }));/**/
+
+ it('should return a DVD', async () => {
+    component.id = '9';
+    await component.ngOnInit();
+    expect(component.dvd).toEqual({
+      id: 9,
+      genre: 'Action',
+      name: 'retest',
+      price: 2.4,
+      quantity: 6,
+      imgPath :'4dvd.jpg',
+      synopsis: 'blabla',
+    });
+  });/**/
 
 });
