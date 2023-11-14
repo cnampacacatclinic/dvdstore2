@@ -1,7 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 import { DvdServiceService } from './dvd-service.service';
 import axios, { AxiosResponse, AxiosHeaders } from 'axios';
-import { NO_ERRORS_SCHEMA } from '@angular/core';
 
 export interface Dvd {
   id: number;
@@ -20,9 +19,6 @@ describe('DvdServiceService', () => {
     TestBed.configureTestingModule({});
     service = TestBed.inject(DvdServiceService);
   });
-
-
-  //les tests débutent là :-)
 
   it('should retrieve a specific DVD', (done: DoneFn) => {
     const dvd: Dvd = {
@@ -54,9 +50,6 @@ describe('DvdServiceService', () => {
       expect(retrievedDvd.data).toEqual(dvd);
       done();
     });
-
-    schemas: [ NO_ERRORS_SCHEMA ]/*ne sert pas ici car permet d'éviter les erreurs relatives aux composants enfants inexistants ou manquants dans le test unitaire*/
-
   });
   
 });
