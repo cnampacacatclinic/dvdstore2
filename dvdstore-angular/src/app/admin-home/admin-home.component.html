@@ -4,7 +4,6 @@
             <figure class="vignetteDvd" *ngFor="let dvd of dvdToShow">
                 <!-- pour afficher grace à l'id -->
                 <a [href]="'/detail-dvd/' + dvd.id">
-                <!--<img [src]="dvd.imgPath" alt="dvd" style="width: 200px">-->
                 <img [src]="'assets/img/' + dvd.imgPath" alt="dvd">
                 </a>
                 <figcaption>

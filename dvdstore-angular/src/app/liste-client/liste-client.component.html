@@ -1,5 +1,6 @@
 <section>
-    <table class="table">
+  <h1>Liste des clients</h1>
+    <table class="table table-hover">
         <thead>
           <tr>
             <th scope="col">Id</th>
@@ -13,7 +14,7 @@
         </thead>
         <tbody>
           <tr *ngFor="let customer of customerToShow">
-            <td>{{ customer.id }}</td>
+            <td scope="row">{{ customer.id }}</td>
             <td>{{ customer.firstName }}</td>
             <td>{{ customer.lastName }}</td>
             <td>{{ customer.mail }}</td>

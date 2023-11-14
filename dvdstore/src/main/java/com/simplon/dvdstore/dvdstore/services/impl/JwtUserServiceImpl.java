@@ -1,0 +1,109 @@
+package com.simplon.dvdstore.dvdstore.services.impl;
+import java.util.Date;
+
+import com.simplon.dvdstore.dvdstore.exceptions.AccountExistsException;
+import com.simplon.dvdstore.dvdstore.repositories.OwnerRepository;
+import com.simplon.dvdstore.dvdstore.services.JwtUserService;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import com.simplon.dvdstore.dvdstore.domain.Owner;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+
+@Service
+public class JwtUserServiceImpl implements JwtUserService {
+    @Autowired
+    private OwnerRepository ownerRepository;
+
+    @Autowired
+    AuthenticationConfiguration authenticationConfiguration;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+    private final String signingKey;
+    public JwtUserServiceImpl(@Value("${jwt.signing.key}") String signingKey) {
+        this.signingKey = signingKey;
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws
+            UsernameNotFoundException {
+        Owner owner = ownerRepository.findByLogin(username);
+        if (owner == null) {
+            throw new UsernameNotFoundException("The owner could not be found");
+        }
+        return owner;
+    }
+
+    // USED FOR REGISTRATION
+
+    @Override
+    public Authentication authenticate(String username, String password) throws Exception {
+        Authentication authentication = new
+                UsernamePasswordAuthenticationToken(username, password);
+        return authenticationConfiguration.getAuthenticationManager().authenticate(authentication);
+    }
+
+
+    @Override
+    public UserDetails save(String username, String password) throws AccountExistsException {
+        UserDetails existingUser = ownerRepository.findByLogin(username);
+        if (existingUser != null) {
+            throw new AccountExistsException();
+        }
+        Owner owner = new Owner();
+        owner.setLogin(username);
+        owner.setPassword(passwordEncoder.encode(password));
+        ownerRepository.save(owner);
+        return owner;
+
+    }
+
+    //USED FOR AUTHENTIFICATION
+
+    @Override
+    public UserDetails getUserFromJwt(String jwt) {
+        String username = getUsernameFromToken(jwt);
+        return loadUserByUsername(username);
+    }
+
+    private String getUsernameFromToken(String token) {
+        System.out.println(signingKey);
+        Claims claims =
+                Jwts.parser().setSigningKey(signingKey).parseClaimsJws(token).getBody();
+        return claims.getSubject();
+    }
+
+
+    @Override
+    public String generateJwtForUser(UserDetails user) {
+        Date now = new Date();
+        Date expiryDate = new Date(now.getTime() + 3600 * 1000);
+        return
+                Jwts.builder().setSubject(user.getUsername()).setIssuedAt(now).setExpiration(expiryDate)
+                        .signWith(SignatureAlgorithm.HS512, signingKey)
+                        .compact();
+    }
+
+    public boolean updatePassword(UserDetails userDetails) {
+        //je recherche dans la table grâce au donnée de l'utilisateur
+        Owner owner = ownerRepository.findByLogin(String.valueOf(userDetails));
+        //si c'est null, on affiche un message (dans la console pour l'instant)
+        if (owner == null) {
+            throw new UsernameNotFoundException("L'utilisateur n'existe pas");
+        }else {
+            // Met à jour le mot de passe
+            owner.setPassword(passwordEncoder.encode(userDetails.getPassword()));
+            ownerRepository.save(owner);
+            return true;
+        }
+    }
+}

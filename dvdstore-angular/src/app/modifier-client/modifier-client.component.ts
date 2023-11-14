@@ -70,7 +70,6 @@ export class ModifierClientComponent {
         }
       return customerObjet;
     });
-    //console.log('id customerObjet  :'+customerObjet);
     console.log('this.id : '+this.id2);
     console.log('id2 : '+id2);
 

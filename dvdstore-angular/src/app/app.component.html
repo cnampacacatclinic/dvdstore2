@@ -1,99 +1,64 @@
-<header>
-  <!--<a title="Home" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
-  <nav>
-    <ul>
-      <li>
-        <a title="Home" href="">Home</a>
-      </li>
-      <li id="genreListe">
-          <form>
-          <select>
-            <option value="">Genre</option>
-            <option (click)="handleGenreClickButton('Action')">
-                Action
-            </option>
-            <option (click)="handleGenreClickButton('Aventure')">
-                Aventure
-            </option>
-            <option (click)="handleGenreClickButton('Horreur')">
-                Horreur
-            </option>
-            <option (click)="handleGenreClickButton('Comedie')">
-                Comedie
-            </option>
-            <option (click)="handleGenreClickButton('Thriller')">
-                Thriller
-            </option>
-            <option (click)="handleGenreClickButton('Drame')">Drame</option>
-            <option (click)="handleGenreClickButton('Science-fiction')">Science-fiction</option>
-          </select>
+<ion-app class="overflow">
+    <header  style="position: fixed;top:0;">
+      <nav id="navbarre" class="navbar navbar-expand-lg navbar-light">
+        <a class="navbar-brand" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="" title="Home">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Genre
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" (click)="handleGenreClickButton('Action')">Action</a>
+                <a class="dropdown-item" (click)="handleGenreClickButton('Aventure')">Aventure</a>
+                <a class="dropdown-item" (click)="handleGenreClickButton('Comedie')">comédie</a>
+                <a class="dropdown-item" (click)="handleGenreClickButton('Drame')">Drame</a>
+                <a class="dropdown-item" (click)="handleGenreClickButton('Science-fiction')">Science-fiction</a>
+                <a class="dropdown-item" (click)="handleGenreClickButton('Thriller')">Thriller</a>
+              </div>
+            </li>
+            <!--si la session "token" et la session "role" existent, on affiche les liens pour l'admin -->
+            <li *ngIf="sessionToken && sessionRole" class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="/admin-home" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Admin
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/admin-home">Admin Home</a>
+                <a class="dropdown-item" href="/ajouter-dvd">Ajout Dvd</a>
+                <a class="dropdown-item" href="/liste-client">Liste des Clients</a>
+                <a class="dropdown-item" href="/liste-vente">Liste des ventes</a>
+                <a class="dropdown-item" href="/creer-vente">Créer une vente</a>
+                <a class="dropdown-item" href="/ajouter-client">Ajouter un client</a>
+                <a class="dropdown-item" href="liste-panier">Liste des paniers</a>
+                <a class="dropdown-item" href="formulaire-panier">Ajouter un paniers</a>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <form id="formSearch" class="form-inline my-2 my-lg-0">
+          <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+          <button (click)="handleButtonSearchClick()" class="violet my-2 my-sm-0" type="submit">...</button>
         </form>
-      </li>
-      <li>
-        <form id="formSearch">
-          <input (click)="handleButtonSearchClick()" type="search" placeholder="Search" [(ngModel)]="searchText">
-          <button (click)="handleButtonSearchClick()">...</button>
-        </form>
-      </li>
-      <li >
-        <a title="Ajouter" href="add">Ajouter</a>
-      </li>
-    <li id="">
-      <a title="Connexion" href="login">Connexion</a>
-    </li>
-  </ul>
-  
-  </nav>-->
-  <nav id="navbarre" class="navbar navbar-expand-lg navbar-light">
-    <a class="navbar-brand" href=""><img src="assets/img/logo.png" alt="Logo de DVDStore"></a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-  
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="" title="Home">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Genre
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" (click)="handleGenreClickButton('Action')">Action</a>
-            <a class="dropdown-item" (click)="handleGenreClickButton('Aventure')">Aventure</a>
-            <a class="dropdown-item" (click)="handleGenreClickButton('Comedie')">comédie</a>
-            <a class="dropdown-item" (click)="handleGenreClickButton('Drame')">Drame</a>
-            <a class="dropdown-item" (click)="handleGenreClickButton('Science-fiction')">Science-fiction</a>
-            <a class="dropdown-item" (click)="handleGenreClickButton('Thriller')">Thriller</a>
-          </div>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="/admin-home" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Admin
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="/ajouter-dvd">Ajout Dvd</a>
-            <a class="dropdown-item" href="/liste-client">Liste des Clients</a>
-            <a class="dropdown-item" href="/liste-vente">Liste des ventes</a>
-            <a class="dropdown-item" href="/creer-vente">Créer une vente</a>
-            <a class="dropdown-item" href="/ajouter-client">Ajouter un client</a>
-          </div>
-        </li>
-      </ul>
-    </div>
-    <form id="formSearch" class="form-inline my-2 my-lg-0">
-      <input (click)="handleButtonSearchClick()" class="mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button (click)="handleButtonSearchClick()" class="violet my-2 my-sm-0" type="submit">...</button>
-    </form>
-  
-    <a id="connexion" title="Connexion" href="login">Connexion</a>
-  
-  </nav>
-</header>
-<main>
-  <router-outlet></router-outlet>
-</main>
-<footer>
-  <p>Copyright &copy;</p>
-</footer>
+        <!--si la session "token" et la session "role" existent, affiche le lien déconnexion-->
+        <a title="Déconnexion" (click)="deconnexion()" href="/" *ngIf="sessionToken && sessionRole">Déconnexion</a>
+        <!--//sinon affiche le lien connexion-->
+        <a id="connexion" title="Connexion" href="login" *ngIf="!sessionToken && !sessionRole">Connexion</a>
+      </nav>
+  </header>
+  <main>
+    <ion-content *ngIf="isAndroid||isIphone" [fullscreen]="true" [scrollEvents]="true" class="ion-padding overflow">
+      <ion-router-outlet class="ionRouter"></ion-router-outlet>
+    </ion-content>
+    <router-outlet *ngIf="!isAndroid||!isIphone"></router-outlet>
+  </main>
+  <footer>
+      <p>Copyright &copy;</p>
+  </footer>
+</ion-app>

@@ -14,6 +14,7 @@ export interface Dvd {
   synopsis: string;
   imgPath : string;
 }
+let idDvd:number;
 
 @Component({
   selector: 'app-modifier-dvd',
@@ -23,7 +24,7 @@ export interface Dvd {
 
 export class ModifierDvdComponent {
   //dvd = {imgPath :'assets/img/2dvd.jpg'}
-
+  
   constructor(private dvdService: DvdServiceService,private route : ActivatedRoute) {}
   
   dvdObj={
@@ -48,9 +49,14 @@ export class ModifierDvdComponent {
     }
   }
 
+  deleteClickButton(){
+    idDvd=Number(this.route.snapshot.paramMap.get('id'));
+    this.dvdService.delDvd(idDvd);
+  }
+
   async ngOnInit() {
     this.id=this.route.snapshot.paramMap.get('id');
-    //J'ai du transformer le string en numerique
+    //J'ai du transformer le string en numerique parce que c'est ce qui est attendu
     id2=Number(this.id);
     this.dvdService.getOneDvd(id2).then((response) => {
 

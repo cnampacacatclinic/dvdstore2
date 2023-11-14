@@ -22,19 +22,21 @@ let id2:number;
 export class DetailDvdComponent {
   id: string | null='0';
   dvd = {
-    id:'',
-    name: '',
-    genre: '',
-    quantity : 0,
-    price :0,
-    imgPath :'',
-    synopsis : ''
+    id: 9,
+    genre: 'Action',
+    name: 'retest',
+    price: 2.4,
+    quantity: 6,
+    imgPath :'4dvd.jpg',
+    synopsis: 'blabla'
   }
 
 
- // dvdToShow: Dvd | null = null;
-
   constructor(private dvdService: DvdServiceService,private route : ActivatedRoute) {}
+
+  public maFonction() {
+    return "Hello World!";
+  }
 
   async ngOnInit() {
     this.id=this.route.snapshot.paramMap.get('id');
@@ -45,7 +47,7 @@ export class DetailDvdComponent {
       if(this.id!=null){
         const dvd: DvdGetAllDTO = response.data;
         this.dvd = {
-          id: this.id,
+          id: Number(this.id),
           genre: dvd.genre,
           name: dvd.name,
           price: dvd.price,
@@ -59,10 +61,6 @@ export class DetailDvdComponent {
     }
     console.log(this.dvd);
   });
-
-    /*
-     this.dvdService.getOneDvd(id);
-    /** */
   }
 
 }

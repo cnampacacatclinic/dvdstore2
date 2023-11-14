@@ -1,23 +1,47 @@
 import { Component } from '@angular/core';
 import { GenreEnum } from './utils/enum/GenreEnum';
+import { Platform } from '@ionic/angular';//pour connaitre l'os
 
 export interface Dvd {
   name: string,
   genre: GenreEnum,
   imgPath: string
 }
+
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+  
+  //le session est dans sessionStorage et non dans localStorage !!!
+  sessionToken : string = sessionStorage.getItem("token") as string; //on a caster  en string : as string
+  sessionRole : string = sessionStorage.getItem("role") as string; //on a caster  en string : as string
 
 
+  //pour savoir quel type d'application pour connaitre quel router-outlet on souhaite
+  isAndroid: boolean;
+  isIphone: boolean;
+
+
+  constructor(private platform: Platform) {
+    this.isAndroid = this.platform.is('android');
+    this.isIphone = this.platform.is('iphone');
+  }
+
+  //fonction deconnexion
+  deconnexion(){
+    sessionStorage.removeItem("token");
+    sessionStorage.removeItem("role");
+    // Supprimer toutes les données de sessionStorage
+    //sessionStorage.clear();
+  }
 
 
   title = 'dvdstore-angular';
-  searchText = 'a';
+  searchText = '';
 
 
   dvds : Array<Dvd>  = [
@@ -69,8 +93,6 @@ export class AppComponent {
   dvdToShow : Array<Dvd> = []
 
   genreFilter: string = ''
-
-  constructor() {}
 
   handleGenreClickButton = (genre : string) => {
     this.dvdToShow = this.dvds.filter((value) => {
