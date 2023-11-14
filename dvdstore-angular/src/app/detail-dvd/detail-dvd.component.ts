@@ -34,6 +34,10 @@ export class DetailDvdComponent {
 
   constructor(private dvdService: DvdServiceService,private route : ActivatedRoute) {}
 
+  public maFonction() {
+    return "Hello World!";
+  }
+
   async ngOnInit() {
     this.id=this.route.snapshot.paramMap.get('id');
     //J'ai du transformer le string en numerique
