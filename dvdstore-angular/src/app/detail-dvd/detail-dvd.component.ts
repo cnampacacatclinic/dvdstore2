@@ -22,13 +22,13 @@ let id2:number;
 export class DetailDvdComponent {
   id: string | null='0';
   dvd = {
-    id:'',
-    name: '',
-    genre: '',
-    quantity : 0,
-    price :0,
-    imgPath :'',
-    synopsis : ''
+    id: 9,
+    genre: 'Action',
+    name: 'retest',
+    price: 2.4,
+    quantity: 6,
+    imgPath :'4dvd.jpg',
+    synopsis: 'blabla'
   }
 
 
@@ -47,7 +47,7 @@ export class DetailDvdComponent {
       if(this.id!=null){
         const dvd: DvdGetAllDTO = response.data;
         this.dvd = {
-          id: this.id,
+          id: Number(this.id),
           genre: dvd.genre,
           name: dvd.name,
           price: dvd.price,

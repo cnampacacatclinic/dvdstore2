@@ -1,7 +1,8 @@
-import { TestBed, inject, async } from '@angular/core/testing';
+import { TestBed, inject, async, waitForAsync } from '@angular/core/testing';
 //import { DvdServiceServiceService, DvdGetAllDTO } from '../dvd-service.service';
 import { DetailDvdComponent } from './detail-dvd.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, convertToParamMap } from '@angular/router';
+
 
 export interface Dvd {
   id: number;
@@ -20,8 +21,19 @@ describe('DetailDvdComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ DetailDvdComponent ],
-      //providers: [DvdServiceServiceService]
-      providers: [DetailDvdComponent]
+
+      providers: [
+      {
+          provide: ActivatedRoute,
+          //providers: [DetailDvdComponent],
+          useValue: {
+              snapshot:{
+                  paramMap: convertToParamMap({ id:6 }) // id de l'url
+              },
+          },
+      },
+  ],
+  /**/
     })
     .compileComponents();
   });
@@ -39,22 +51,19 @@ describe('DetailDvdComponent', () => {
     expect(component.maFonction()).toBe('Hello World!');
   });
 
-  /*it('devrait return un dvd...', () => {
-    const dvd: Dvd = {
-          id: 1,
-          genre: 'horreur',
-          name: 'Amityville, la maison du diable',
-          price: 10.5,
-          quantity: 1800,
-          imgPath :'2dvd.jpg',
-          synopsis: 'En 2048. Doug Quaid rêve chaque nuit qu\'il est sur la planète Mars à la recherche de la belle Melina. Sa femme, Lori, s\'efforce de dissiper ce fantasme. Doug va bientôt s\'apercevoir que son rêve était artificiel et que sa femme est une espionne chargée de'
+ it('devrait return un dvd...', waitForAsync(() => {
+    const dvd = {
+          id: 9,
+          genre: 'Action',
+          name: 'retest',
+          price: 2.4,
+          quantity: 6,
+          imgPath :'4dvd.jpg',
+          synopsis: 'blabla'
         }
-      let idDvd2=1;
-    expect(component.dvd).toEqual(dvd as any);
-
-    /*DvdServiceService.getOneDvd(1).subscribe((dvd.id) => {
-      expect(idDvd2).toEqual({ data: dvd.id })
-    });
-  });/**/ 
+      //let idDvd2=1;
+      component.ngOnInit();
+    expect(component.dvd).toEqual(dvd);
+  }));/**/
 
 });
